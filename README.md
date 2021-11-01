@@ -26,7 +26,7 @@ The functionality will then be divided into two separate lists: MVP and PostMVP.
 #### MVP 
 
 - User authentication
-- Link a pinterest board to a character/scene/idea for visual inspiration
+- Link a pinterest board to a character for visual inspiration
 - Add a story to your notebook + add info/characters unique to that story.
 - Utilize a timeline to track the events of your plot
 
