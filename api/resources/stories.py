@@ -4,6 +4,7 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from story import Story
+from timeline import Timeline
 
 story = Blueprint('stories', __name__, url_prefix='api/stories')
 
@@ -35,6 +36,7 @@ def get_one_story(storyid):
 def new_story():
     body = request.get_json()
     story = Story.create(**body, user_id=current_user.id)
+    Timeline.create(story_id=story.id)
     return jsonify(model_to_dict(story)), 201
 
 
