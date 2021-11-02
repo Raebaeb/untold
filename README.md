@@ -56,10 +56,10 @@ The functionality will then be divided into two separate lists: MVP and PostMVP.
 | Implement Timeline Event Creation | H | 3hrs|  | |
 | Connect Pinterest API to character form | H | 2hrs|  |  |
 | Create 'Link to' Modal for Idea Form | H | 3hrs|  | |
-| Set up Models | H | 2hrs|  |  |
-| Create Database/connect server | L | 1hrs|  |  |
+| Set up Models | H | 2hrs| 1hr | 1hr |
+| Create Database/connect server | L | 1hrs| .3 hrs | .3hr |
 | Implement User Auth & Routes | H | 3hrs|  | |
-| CRUD Routing for Story and Event Tables on Backend | H | 2hrs|  |  |
+| CRUD Routing for Story and Event Tables on Backend | H | 2hrs| .5 hr |  |
 | CRUD Routing for Character, Idea, Scene on Backend | H | 3hrs|  | |
 | Client-side Component Creation| H | 3hrs|  |  |
 | Connect Screens with Components | H | 2hrs|  | |
