@@ -29,7 +29,7 @@ def get_one_idea(storyid, ideaid):
     except DoesNotExist:
         return jsonify(error='Idea does not exist.'), 404
 
-@idea.route('/newidea', methods=['POST'])
+@idea.route('/new', methods=['POST'])
 @login_required
 def create_idea(storyid):
     body = request.get_json()

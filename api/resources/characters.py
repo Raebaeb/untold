@@ -27,7 +27,7 @@ def get_one_char(storyid, charid):
     except DoesNotExist:
         return jsonify(error='Character does not exist.'), 404
 
-@character.route('/newchar', methods=['POST'])
+@character.route('/new', methods=['POST'])
 @login_required
 def create_char(storyid):
     body = request.get_json()

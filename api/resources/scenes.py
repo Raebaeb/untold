@@ -28,7 +28,7 @@ def get_one_scene(storyid, sceneid):
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 
-@scene.route('/newscene', methods=['POST'])
+@scene.route('/new', methods=['POST'])
 @login_required
 def create_scene(storyid):
     body = request.get_json()
