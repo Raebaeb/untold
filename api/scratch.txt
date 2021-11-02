@@ -1,0 +1,52 @@
+scene payload
+
+response = {
+    "sceneInfo" : {
+      title
+      participants
+      location
+      summary
+      notes
+      story_id
+    }
+    "addToScene" : {
+        "john": john_id,
+        "rob": rob_id
+    }
+    "removeFromScene" : {
+        "mark": mark_id
+        }
+    }
+}
+
+idea payload
+
+
+response = {
+    "ideaInfo" : {
+      title
+      participants
+      location
+      summary
+      notes
+      story_id
+    }
+    "linkToIdea" : {
+        "characters": {
+          "john": john_id,
+          "rob": rob_id
+        },
+        "scenes": {
+          "scene1": scene_id
+        }
+    }
+    "removeFromIdea" : {
+        "characters": {
+          "john": john_id,
+          "rob": rob_id
+        },
+        "scenes": {
+          "scene1": scene_id
+        }
+    }
+}

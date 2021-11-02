@@ -4,7 +4,6 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from scene import Scene
-from character import Character
 from char_to_scene import CharToScene
 
 scene = Blueprint('scenes', __name__, url_prefix='/api/<int:storyid>/scenes')
@@ -31,10 +30,10 @@ def get_one_scene(storyid, sceneid):
 
 @scene.route('/newscene', methods=['POST'])
 @login_required
-def create_scene(storyid, characters):
+def create_scene(storyid):
     body = request.get_json()
-    scene = Scene.create(**body, story_id=storyid)
-    [CharToScene.create(character_id=char.id, scene_id=scene.id) for char in characters]
+    scene_info = body['sceneInfo']
+    scene = Scene.create(**scene_info, story_id=storyid)
     return jsonify(model_to_dict(scene)), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
@@ -42,8 +41,9 @@ def create_scene(storyid, characters):
 def edit_scene(storyid, sceneid):
     try:
         body = request.get_json()
+        scene_info = body['sceneInfo']
         (Scene
-            .update(**body)
+            .update(**scene_info)
             .where(Scene.id == sceneid and Scene.story_id == storyid)
             .execute())
         scene = Scene.get_by_id(sceneid)
@@ -58,6 +58,10 @@ def delete_scene(sceneid):
         (Scene
             .delete()
             .where(Scene.id == sceneid)
+            .execute())
+        (CharToScene
+            .delete()
+            .where(CharToScene.scene_id == sceneid)
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:
