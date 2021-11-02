@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 from character import Character
 
-character = Blueprint('characters', __name__, url_prefix='/api/characters/<int:storyid>')
+character = Blueprint('characters', __name__, url_prefix='/api/<int:storyid>/characters')
 
 @character.route('/')
 @login_required
