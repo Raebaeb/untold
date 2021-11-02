@@ -67,4 +67,4 @@ def delete_story(storyid):
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:
-        return jsonify(error='Story not found'), 404
+        return jsonify(error='Story not found.'), 404

@@ -4,6 +4,20 @@ from flask_login import LoginManager, login_manager
 
 from db import DATABASE, initialize
 
+from user import User
+from story import Story
+from character import Character
+from scene import Scene
+from idea import Idea
+from timeline import Timeline
+
+from resources.users import user
+from resources.stories import story
+from resources.characters import character
+from resources.scenes import scene
+from resources.ideas import idea
+from resources.timelines import timeline
+
 DEBUG = True
 PORT = 8000
 
@@ -36,7 +50,21 @@ def after_request(response):
 def index():
     return 'This is the root route', 200
 
+CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(story, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(character, origins=['http://localhost:3000'], supports_credentials=True)
+# CORS(scene, origins=['http://localhost:3000'], supports_credentials=True)
+# CORS(idea, origins=['http://localhost:3000'], supports_credentials=True)
+# CORS(timeline, origins=['http://localhost:3000'], supports_credentials=True)
+
+app.register_blueprint(user)
+app.register_blueprint(story)
+app.register_blueprint(character)
+# app.register_blueprint(scene)
+# app.register_blueprint(idea)
+# app.register_blueprint(timeline)
+
 if __name__ == '__main__':
     print("app.py is running")
-    initialize([])
+    initialize([User, Story, Character, Scene, Idea, Timeline])
     app.run(debug=DEBUG, port=PORT)
