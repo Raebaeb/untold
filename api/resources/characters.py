@@ -3,6 +3,7 @@ from flask_login import login_required
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
+from story import Story
 from character import Character
 
 character = Blueprint('characters', __name__, url_prefix='/api/<int:storyid>/characters')
@@ -21,7 +22,8 @@ def get_all_chars(storyid):
 def get_one_char(storyid, charid):
     try:
         character = Character.get_by_id(charid)
-        if (character.story_id != storyid):
+        story = Story.get_by_id(storyid)
+        if (character.story_id != story):
             return jsonify(error='Character does not exist.'), 404
         return jsonify(model_to_dict(character)), 200
     except DoesNotExist:
@@ -31,7 +33,8 @@ def get_one_char(storyid, charid):
 @login_required
 def create_char(storyid):
     body = request.get_json()
-    character = Character.create(**body, story_id=storyid)
+    story = Story.get_by_id(storyid)
+    character = Character.create(**body, story_id=story.id)
     return jsonify(model_to_dict(character)), 201
 
 @character.route('/edit/<int:charid>', methods=['PUT'])
