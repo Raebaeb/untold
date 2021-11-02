@@ -33,8 +33,14 @@ def get_one_scene(storyid, sceneid):
 def create_scene(storyid):
     body = request.get_json()
     scene_info = body['sceneInfo']
+    add = body['addToScene']
     scene = Scene.create(**scene_info, story_id=storyid)
-    return jsonify(model_to_dict(scene)), 201
+    if (add != None):
+        linked_chars = []
+        for char in add.values():
+            character = CharToScene.create(scene_id=scene.id, character_id=char)
+            linked_chars.push(model_to_dict(character))
+    return jsonify(model_to_dict(scene), linked_chars), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
 @login_required
@@ -55,13 +61,13 @@ def edit_scene(storyid, sceneid):
 @login_required
 def delete_scene(sceneid):
     try:
-        (Scene
-            .delete()
-            .where(Scene.id == sceneid)
-            .execute())
         (CharToScene
             .delete()
             .where(CharToScene.scene_id == sceneid)
+            .execute())
+        (Scene
+            .delete()
+            .where(Scene.id == sceneid)
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:

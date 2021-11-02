@@ -63,7 +63,8 @@ The functionality will then be divided into two separate lists: MVP and PostMVP.
 | CRUD Routing for Character, Idea, Scene on Backend | H | 3hrs| 2hrs | |
 | Client-side Component Creation| H | 3hrs|  |  |
 | Connect Screens with Components | H | 2hrs|  | |
-| Total |  | 56.5hrs| 4.3hrs |  |
+| Create + Implement tests on front-end | M | 3hrs|  |  |
+| Total |  | 59.5hrs| 4.3hrs |  |
 
 ## SWOT Analysis
 

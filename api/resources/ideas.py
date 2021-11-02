@@ -35,6 +35,7 @@ def create_idea(storyid):
     body = request.get_json()
     idea_info = body['ideaInfo']
     idea = Idea.create(**idea_info, story_id=storyid)
+    
     return jsonify(model_to_dict(idea)), 201
 
 @idea.route('/edit/<int:ideaid>', methods=['PUT'])
@@ -56,10 +57,6 @@ def edit_idea(storyid, ideaid):
 @login_required
 def delete_idea(ideaid):
     try:
-        (Idea
-            .delete()
-            .where(Idea.id == ideaid)
-            .execute())
         (CharToIdea
             .delete()
             .where(CharToIdea.idea_id == ideaid)
@@ -67,6 +64,10 @@ def delete_idea(ideaid):
         (SceneToIdea
             .delete()
             .where(SceneToIdea.idea_id == ideaid)
+            .execute())
+        (Idea
+            .delete()
+            .where(Idea.id == ideaid)
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:

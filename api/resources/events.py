@@ -7,7 +7,7 @@ from resources import characters
 
 from event import Event
 
-event = Blueprint('events', __name__, url_prefix='api/<int:timelineid>/events')
+event = Blueprint('events', __name__, url_prefix='/api/<int:timelineid>/events')
 
 @event.route('/')
 @login_required
