@@ -16,7 +16,11 @@ scene = Blueprint('scenes', __name__, url_prefix='/api/<int:storyid>/scenes')
 @story_auth
 def get_all_scenes(storyid):
     try:
-        scenes = [model_to_dict(scene) for scene in Scene.select().where(Scene.story_id == storyid)]
+        scenes = []
+        for scene in Scene.select().where(Scene.story_id == storyid):
+            scene_dict = model_to_dict(scene)
+            del scene_dict['story_id'], scene_dict['summary'], scene_dict['notes']
+            scenes.append(scene_dict)
         return jsonify(scenes), 200
     except DoesNotExist:
         return jsonify(error='Error finding resources'), 500
@@ -59,7 +63,7 @@ def create_scene(storyid):
             CharToScene.create(scene_id=scene, character_id=character)
     scene_dict = model_to_dict(scene)
     del scene_dict['story_id']
-    return jsonify(join_scene), 201
+    return jsonify(scene_dict), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
 @login_required
@@ -72,7 +76,7 @@ def edit_scene(storyid, sceneid):
         remove = body['removeFromScene']
         (Scene
             .update(**scene_info)
-            .where(Scene.id == sceneid, Scene.story_id == storyid)
+            .where(Scene.id == sceneid)
             .execute())
         scene = Scene.get_by_id(sceneid)
         if (remove != None):
@@ -81,9 +85,10 @@ def edit_scene(storyid, sceneid):
         if (add != None):
             for char in add.values():
                 character = Character.get_by_id(char)
-                CharToScene.create(scene_id=scene.id, character_id=character)
-        join_scene = [model_to_dict(info) for info in CharToScene.select(Scene, CharToScene.character_id).join(Scene).where(CharToScene.scene_id == scene)]
-        return jsonify(join_scene), 203
+                CharToScene.get_or_create(scene_id=scene.id, character_id=character)
+        scene_dict = model_to_dict(scene)
+        del scene_dict['story_id']
+        return jsonify(scene_dict), 203
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 
