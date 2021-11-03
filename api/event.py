@@ -4,7 +4,6 @@ from timeline import Timeline
 
 class Event(BaseModel):
     timeline_id = ForeignKeyField(Timeline, backref='events')
-    position = IntegerField()
+    position = IntegerField(unique=True)
     title = CharField()
     description = CharField()
-    is_trucker = BooleanField()

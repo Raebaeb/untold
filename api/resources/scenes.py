@@ -62,12 +62,12 @@ def edit_scene(storyid, sceneid):
         remove = body['removeFromScene']
         (Scene
             .update(**scene_info)
-            .where(Scene.id == sceneid and Scene.story_id == storyid)
+            .where(Scene.id == sceneid, Scene.story_id == storyid)
             .execute())
         scene = Scene.get_by_id(sceneid)
         if (remove != None):
             for char in remove.values():
-                CharToScene.delete().where(CharToScene.scene_id == scene and CharToScene.character_id == char)
+                CharToScene.delete().where(CharToScene.scene_id == scene, CharToScene.character_id == char)
         linked_chars = [model_to_dict(char) for char in CharToScene.select().where(CharToScene.scene_id == scene)]
         if (add != None):
             for char in add.values():
@@ -90,7 +90,7 @@ def delete_scene(storyid, sceneid):
             .execute())
         (Scene
             .delete()
-            .where(Scene.id == sceneid and Scene.story_id == storyid)
+            .where(Scene.id == sceneid, Scene.story_id == storyid)
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:

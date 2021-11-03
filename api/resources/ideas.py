@@ -52,7 +52,7 @@ def edit_idea(storyid, ideaid):
         idea_info = body['ideaInfo']
         (Idea
             .update(**idea_info)
-            .where(Idea.id == ideaid and Idea.story_id == storyid)
+            .where(Idea.id == ideaid, Idea.story_id == storyid)
             .execute())
         idea = Idea.get_by_id(ideaid)
         return jsonify(model_to_dict(idea)), 203

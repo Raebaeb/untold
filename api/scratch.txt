@@ -51,11 +51,7 @@ response = {
     }
 }
 
-   {
-    "name": "Dagna",
-		"age": 23,
-		"occupation": "Spirit Slayer",
-		"abilities": "trained with sword and shield, spiritslayer magic, Iopha's truthseeking blessing gives her heightened attention to detail and lie detection",
-		 "appearance": "dirty blonde hair, olive skin, blue tattoos, muscular, gap in her front teeth",
-		 "goals": "find the reason for the upswell of uncanny in the area"
-	 }
+{"title": "Tofu Tales",
+ "genre": "Autobiography",
+ "description": "Tofu sits down to tell the world about his life of adventure"
+}
