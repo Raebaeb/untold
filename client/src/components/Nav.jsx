@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
   return (
     <nav>
-      <Link to='/'>Home</Link>
+      <Link to="/home">Untold.</Link>
+      {props.user ? (<><h3>Welcome back, {props.user}!</h3>
+                    <button>Log Out</button></>) : null}
     </nav>
   );
 };

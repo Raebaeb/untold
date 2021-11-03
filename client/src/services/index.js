@@ -1,14 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
+import { defaultRoute, register, login, logout } from "./user"
 
-const apiURL = process.env.NODE_ENV === "development"
-  ? "devURL"
-  : "prodURL";
+axios.defaults.withCredentials = true;
 
-  export const defaultRoute = async () => {
-    try {
-      const response = await axios.get(apiURL);
-      return response.data;
-    } catch (e) {
-      console.error(e.message)
-    }
-  }
+export {
+  defaultRoute,
+  register,
+  login,
+  logout
+}

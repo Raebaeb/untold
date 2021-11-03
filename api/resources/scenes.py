@@ -30,11 +30,13 @@ def get_one_scene(storyid, sceneid):
         scene = Scene.get_by_id(sceneid)
         if (scene.story_id != story):
             return jsonify(error='Scene does not exist.'), 404
-        find_links = [link.scene_id.title for link in (CharToScene.select()
-        .where(CharToScene.scene_id == scene))]
-            
-        return jsonify(find_links), 200
-            
+        get_links = (CharToScene.select(CharToScene.character_id)
+        .where(CharToScene.scene_id == scene))
+        for link in get_links:
+            model_to_dict(link)
+        scene_dict = model_to_dict(scene)
+        del scene_dict['story_id']
+        return jsonify(scene_dict), 200
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 
