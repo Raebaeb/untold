@@ -30,7 +30,11 @@ def get_one_scene(storyid, sceneid):
         scene = Scene.get_by_id(sceneid)
         if (scene.story_id != story):
             return jsonify(error='Scene does not exist.'), 404
-        return jsonify(model_to_dict(scene)), 200
+        find_links = [link.scene_id.title for link in (CharToScene.select()
+        .where(CharToScene.scene_id == scene))]
+            
+        return jsonify(find_links), 200
+            
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 
@@ -44,12 +48,11 @@ def create_scene(storyid):
     add = body['addToScene']
     scene = Scene.create(**scene_info, story_id=story)
     if (add != None):
-        linked_chars = []
         for char in add.values():
             character = Character.get_by_id(char)
-            create_link = CharToScene.create(scene_id=scene.id, character_id=character)
-            linked_chars.append(model_to_dict(create_link))
-    return jsonify(model_to_dict(scene), linked_chars), 201
+            CharToScene.create(scene_id=scene.id, character_id=character)
+    join_scene = [model_to_dict(info) for info in CharToScene.select(Scene, CharToScene.character_id).join(Scene).where(CharToScene.scene_id == scene)]
+    return jsonify(join_scene), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
 @login_required
@@ -68,13 +71,12 @@ def edit_scene(storyid, sceneid):
         if (remove != None):
             for char in remove.values():
                 CharToScene.delete().where(CharToScene.scene_id == scene, CharToScene.character_id == char)
-        linked_chars = [model_to_dict(char) for char in CharToScene.select().where(CharToScene.scene_id == scene)]
         if (add != None):
             for char in add.values():
                 character = Character.get_by_id(char)
-                create_link = CharToScene.create(scene_id=scene.id, character_id=character)
-                linked_chars.append(model_to_dict(create_link))
-        return jsonify(model_to_dict(scene)), 203
+                CharToScene.create(scene_id=scene.id, character_id=character)
+        join_scene = [model_to_dict(info) for info in CharToScene.select(Scene, CharToScene.character_id).join(Scene).where(CharToScene.scene_id == scene)]
+        return jsonify(join_scene), 203
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 
@@ -95,3 +97,6 @@ def delete_scene(storyid, sceneid):
         return jsonify(message=None), 204
     except DoesNotExist:
         return jsonify(error='Scene not found.'), 404
+
+
+        

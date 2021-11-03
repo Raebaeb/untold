@@ -50,8 +50,53 @@ response = {
         }
     }
 }
+NEW user
+http://localhost:8000/auth/user/register
+{
+"email": "tofu@tofu.com",
+	"password": "1234",
+	"first_name": "Tofu:,
+  "last_name": "Osos"
+}
 
+http://localhost:8000/api/1/scenes/new
+NEW SCENE 
+{
+    "sceneInfo" : {
+      "title": "Tofu Gets His Scarf",
+      "participants": "Chickpea",
+      "location": "Tofu's cave",
+     "summary": "Chickpea gives Tofu a red scarf",
+      "notes": ""
+    },
+    "addToScene" : {
+        "0": 1
+    }
+
+}
+
+NEW STORY
+http://localhost:8000/api/stories/new
 {"title": "Tofu Tales",
  "genre": "Autobiography",
  "description": "Tofu sits down to tell the world about his life of adventure"
+}
+
+NEW EVENT
+http://localhost:8000/api/1/timeline/events/new
+{
+"position": 0,
+	"title": "Dagna shaves her head",
+	"description": "Dagna undergoes mourning traditions for the death of the Spirit Sayer mentor she had for years"
+}
+
+NEW Character
+http://localhost:8000/api/1/characters/new
+{
+	"name": "Tofu",
+	"age": 6,
+	"occupation": "motivational speaker",
+	"abilities": "super friendly and code savvy",
+	"appearance": "fat brown bear with rosy cheeks and a red scarf",
+	"goals": "Prove that anyone can become a software engineer in 3 months"
 }
