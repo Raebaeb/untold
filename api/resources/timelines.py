@@ -1,17 +1,20 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
+from services import story_auth
+from story import Story
 from timeline import Timeline
 
-timeline = Blueprint('timelines', __name__, url_prefix='/api/<int:storyid>/timeline')
+timeline = Blueprint('timelines', __name__, url_prefix='/api/<int:storyid>/timeline_<int:timelineid>')
 
 @timeline.route('/')
 @login_required
-def get_timeline(storyid):
+@story_auth
+def get_timeline(storyid, timelineid):
     try:
-        timeline = Timeline.select().where(Timeline.story_id == storyid)
-        return jsonify(timeline), 200
+        timeline = Timeline.get_by_id(timelineid)
+        return jsonify(model_to_dict(timeline)), 200
     except DoesNotExist:
         return jsonify(error='Error finding resources'), 500

@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
+from services import story_auth
+from story import Story
 from idea import Idea
 from char_to_idea import CharToIdea
 from scene_to_idea import SceneToIdea
@@ -11,6 +13,7 @@ idea = Blueprint('ideas', __name__, url_prefix='/api/<int:storyid>/ideas')
 
 @idea.route('/')
 @login_required
+@story_auth
 def get_all_ideas(storyid):
     try:
         ideas = [model_to_dict(idea) for idea in Idea.select().where(Idea.story_id == storyid)]
@@ -20,6 +23,7 @@ def get_all_ideas(storyid):
 
 @idea.route('/<int:ideaid>')
 @login_required
+@story_auth
 def get_one_idea(storyid, ideaid):
     try:
         idea = Idea.get_by_id(ideaid)
@@ -31,6 +35,7 @@ def get_one_idea(storyid, ideaid):
 
 @idea.route('/new', methods=['POST'])
 @login_required
+@story_auth
 def create_idea(storyid):
     body = request.get_json()
     idea_info = body['ideaInfo']
@@ -40,6 +45,7 @@ def create_idea(storyid):
 
 @idea.route('/edit/<int:ideaid>', methods=['PUT'])
 @login_required
+@story_auth
 def edit_idea(storyid, ideaid):
     try:
         body = request.get_json()
@@ -55,7 +61,8 @@ def edit_idea(storyid, ideaid):
 
 @idea.route('/delete/<int:ideaid>', methods=['DELETE'])
 @login_required
-def delete_idea(ideaid):
+@story_auth
+def delete_idea(storyid, ideaid):
     try:
         (CharToIdea
             .delete()

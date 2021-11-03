@@ -36,8 +36,8 @@ def get_one_story(storyid):
 def new_story():
     body = request.get_json()
     story = Story.create(**body, user=current_user)
-    Timeline.create(story_id=story.id)
-    return jsonify(model_to_dict(story)), 201
+    timeline = Timeline.create(story_id=story)
+    return jsonify(model_to_dict(story), model_to_dict(timeline)), 201
 
 
 @story.route('/edit/<int:storyid>', methods=['PUT'])

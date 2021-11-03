@@ -1,17 +1,20 @@
 from logging import log
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
-from resources import characters
 
+from services import story_auth
+from story import Story
+from timeline import Timeline
 from event import Event
 
-event = Blueprint('events', __name__, url_prefix='/api/<int:timelineid>/events')
+event = Blueprint('events', __name__, url_prefix='/api/<int:storyid>/timeline_<int:timelineid>/events')
 
 @event.route('/')
 @login_required
-def get_events(timelineid):
+@story_auth
+def get_events(storyid, timelineid):
     try:
         events = [model_to_dict(event) for event in Event.select().where(Event.timeline_id == timelineid)]
         return(jsonify(events)), 200
@@ -20,7 +23,8 @@ def get_events(timelineid):
 
 @event.route('/<int:eventid>')
 @login_required
-def read_event(eventid):
+@story_auth
+def read_event(storyid, eventid):
     try:
         event = Event.get_by_id(eventid)
         return jsonify(model_to_dict(event)), 200
@@ -29,14 +33,16 @@ def read_event(eventid):
 
 @event.route('/new', methods=['POST'])
 @login_required
-def add_event(timelineid):
+@story_auth
+def add_event(storyid, timelineid):
     body = request.get_json()
     event = Event.create(**body, timeline_id=timelineid)
     return jsonify(model_to_dict(event)), 201
 
 @event.route('/edit/<int:eventid>', methods=['PUT'])
 @login_required
-def edit_event(timelineid, eventid):
+@story_auth
+def edit_event(storyid, timelineid, eventid):
     try:
         body = request.get_json()
         (Event
@@ -50,7 +56,8 @@ def edit_event(timelineid, eventid):
 
 @event.route('/delete/<int:eventid>', methods=['DELETE'])
 @login_required
-def delete_event(timelineid, eventid):
+@story_auth
+def delete_event(storyid, timelineid, eventid):
     try:
         (Event
             .delete()

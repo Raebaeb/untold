@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
+from services import story_auth
 from story import Story
 from scene import Scene
 from character import Character
@@ -12,6 +13,7 @@ scene = Blueprint('scenes', __name__, url_prefix='/api/<int:storyid>/scenes')
 
 @scene.route('/')
 @login_required
+@story_auth
 def get_all_scenes(storyid):
     try:
         scenes = [model_to_dict(scene) for scene in Scene.select().where(Scene.story_id == storyid)]
@@ -21,6 +23,7 @@ def get_all_scenes(storyid):
 
 @scene.route('/<int:sceneid>')
 @login_required
+@story_auth
 def get_one_scene(storyid, sceneid):
     try:
         story = Story.get_by_id(storyid)
@@ -33,6 +36,7 @@ def get_one_scene(storyid, sceneid):
 
 @scene.route('/new', methods=['POST'])
 @login_required
+@story_auth
 def create_scene(storyid):
     story = Story.get_by_id(storyid)
     body = request.get_json()
@@ -49,6 +53,7 @@ def create_scene(storyid):
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
 @login_required
+@story_auth
 def edit_scene(storyid, sceneid):
     try:
         body = request.get_json()
@@ -75,6 +80,7 @@ def edit_scene(storyid, sceneid):
 
 @scene.route('/delete/<int:sceneid>', methods=['DELETE'])
 @login_required
+@story_auth
 def delete_scene(storyid, sceneid):
     try:
         scene = Scene.get_by_id(sceneid)

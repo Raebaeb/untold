@@ -4,4 +4,4 @@ from base import BaseModel
 from story import Story
 
 class Timeline(BaseModel):
-    story_id = ForeignKeyField(Story, unique=True, backref='timelines')
+    story_id = ForeignKeyField(Story, backref='timelines')
