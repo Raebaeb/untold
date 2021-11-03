@@ -69,6 +69,7 @@ def create_scene(storyid):
 @login_required
 @story_auth
 def edit_scene(storyid, sceneid):
+    # story = Story.get_by_id(storyid)
     try:
         body = request.get_json()
         scene_info = body['sceneInfo']
@@ -81,11 +82,13 @@ def edit_scene(storyid, sceneid):
         scene = Scene.get_by_id(sceneid)
         if (remove != None):
             for char in remove.values():
-                CharToScene.delete().where(CharToScene.scene_id == scene, CharToScene.character_id == char)
+                # character = Character.get_by_id(char)
+                CharToScene.delete().where(CharToScene.scene_id == sceneid, CharToScene.character_id == char)
         if (add != None):
             for char in add.values():
                 character = Character.get_by_id(char)
-                CharToScene.get_or_create(scene_id=scene.id, character_id=character)
+                if character:
+                    CharToScene.get_or_create(scene_id=scene, character_id=character)
         scene_dict = model_to_dict(scene)
         del scene_dict['story_id']
         return jsonify(scene_dict), 203
@@ -111,4 +114,3 @@ def delete_scene(storyid, sceneid):
         return jsonify(error='Scene not found.'), 404
 
 
-        

@@ -72,7 +72,21 @@ NEW SCENE
     "addToScene" : {
         "0": 1
     }
-
+}
+EDIT SCENE
+{
+    "sceneInfo" : {
+      "title": "Tofu Gets His Scarf",
+      "participants": "Chickpea",
+      "location": "Tofu's cave",
+     "summary": "Chickpea gives Tofu a red scarf",
+      "notes": ""
+    },
+    "addToScene" : {
+        "0": 1
+    },
+    "removeFromScene": {
+    }
 }
 
 NEW STORY
