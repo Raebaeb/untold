@@ -1,4 +1,3 @@
-from enum import unique
 from flask_login import UserMixin
 from peewee import *
 from base import BaseModel

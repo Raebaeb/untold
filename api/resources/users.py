@@ -20,7 +20,7 @@ def register():
         user = User.create(**body)
         login_user(user)
         user_dict = model_to_dict(user)
-        del user_dict['password']            
+        del user_dict['password'], user_dict['last_name'], user_dict['created_at']
         return jsonify(user_dict), 201
 
 @user.route('/login', methods=['POST'])
@@ -33,7 +33,7 @@ def login():
 
         if check_password_hash(user_dict['password'], body['password']):
             login_user(user)
-            del user_dict['password']
+            del user_dict['password'], user_dict['last_name'], user_dict['created_at']
             return jsonify(user_dict), 200
         else:
             return jsonify(message='Email or password is incorrect'), 400

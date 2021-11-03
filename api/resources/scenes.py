@@ -32,10 +32,14 @@ def get_one_scene(storyid, sceneid):
             return jsonify(error='Scene does not exist.'), 404
         get_links = (CharToScene.select(CharToScene.character_id)
         .where(CharToScene.scene_id == scene))
-        for link in get_links:
-            model_to_dict(link)
         scene_dict = model_to_dict(scene)
         del scene_dict['story_id']
+        scene_dict['linked_chars'] = []
+        for link in get_links:
+            link_dict = model_to_dict(link)
+            for key, val in link_dict['character_id'].items():
+                if key == 'id':
+                    scene_dict['linked_chars'].append({'id':f'{val}'})
         return jsonify(scene_dict), 200
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
@@ -52,8 +56,9 @@ def create_scene(storyid):
     if (add != None):
         for char in add.values():
             character = Character.get_by_id(char)
-            CharToScene.create(scene_id=scene.id, character_id=character)
-    join_scene = [model_to_dict(info) for info in CharToScene.select(Scene, CharToScene.character_id).join(Scene).where(CharToScene.scene_id == scene)]
+            CharToScene.create(scene_id=scene, character_id=character)
+    scene_dict = model_to_dict(scene)
+    del scene_dict['story_id']
     return jsonify(join_scene), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])

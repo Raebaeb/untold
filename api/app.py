@@ -35,9 +35,9 @@ app.secret_key = '7c9b2323c24243748a25f87c8ed733aa'
 login_manager.init_app(app)
 
 @login_manager.user_loader
-def load_user(userid):
+def load_user(user):
     try:
-        return User.get(User.id == userid)
+        return User.get(User.id == user)
     except:
         return None
 
@@ -53,7 +53,7 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    return 'This is the root route', 200
+    return 'This is the root route'
 
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
 CORS(story, origins=['http://localhost:3000'], supports_credentials=True)
