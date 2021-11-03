@@ -16,16 +16,16 @@ const Register = (props) => {
     if (password !== passwordConfirm) {
       alert("Passwords don't match");
       return
-    }
+    };
     const newUser = {
       email,
       password,
-      firstName,
-      lastName
+      first_name: firstName,
+      last_name: lastName
     };
     const user = await register(newUser);
     props.setUser(user);
-    history.push('/home')
+    history.push('/home');
   }
   return (
     <section>

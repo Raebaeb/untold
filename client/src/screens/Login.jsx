@@ -15,7 +15,7 @@ const Login = (props) => {
     };
     const user = await login(userInfo);
     props.setUser(user);
-    history.push('/home')
+    history.push('/home');
   }
   return (
     <section>
