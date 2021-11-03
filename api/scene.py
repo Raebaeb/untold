@@ -8,5 +8,5 @@ class Scene(BaseModel):
     participants = TextField()
     location = TextField()
     summary = TextField()
-    notes = TextField()
+    notes = TextField(null=True)
     story_id = ForeignKeyField(Story, backref='scenes')
