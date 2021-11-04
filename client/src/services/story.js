@@ -6,7 +6,7 @@ const apiURL = process.env.NODE_ENV === "development"
 
 export const getAllStories = async () => {
   try {
-    const response = await axios.get(apiURL)
+    const response = await axios.get(`/${apiURL}`)
     return response.data
   } catch (e) {
     console.error(e.message);

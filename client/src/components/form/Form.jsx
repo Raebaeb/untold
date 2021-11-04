@@ -4,18 +4,18 @@ import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
   // pass in handleSubmit, Title of object, fieldsList
-  const { handleSubmit, obj, fieldsList, } = props;
+  const { handleSubmit, obj, fieldsList } = props;
 
   return (
     <form onSubmit={handleSubmit}>
       {fieldsList.map((field) => {
-        if (field.type === "input") {
-          (<Input label={field.label} state={field.state}/>);
-        } else if (field.type === "textarea") {
-          (<TextArea label={field.label} />);
-        } else {
-          (<Dropdown />);
-        }
+        return field.type === "input" ? (
+          <Input key={field.label} label={field.label} state={field.state} />
+        ) : field.type === "textarea" ? (
+          <TextArea label={field.label} key={field.label} state={field.state} />
+        ) : (
+          <h2>it aint workin</h2>
+        );
       })}
 
       <button>Save {obj}</button>
