@@ -4,8 +4,8 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
-from story import Story
-from character import Character
+from models.story import Story
+from models.character import Character
 
 character = Blueprint('characters', __name__, url_prefix='/api/<int:storyid>/characters')
 
@@ -14,7 +14,8 @@ character = Blueprint('characters', __name__, url_prefix='/api/<int:storyid>/cha
 @story_auth
 def get_all_chars(storyid):
     try:
-        characters = [model_to_dict(character) for character in Character.select().where(Character.story_id == storyid)]
+        characters = [model_to_dict(character) for character in Character.select(
+        ).where(Character.story_id == storyid)]
         return jsonify(characters), 200
     except DoesNotExist:
         return jsonify(error='Error finding resources'), 500
@@ -25,9 +26,6 @@ def get_all_chars(storyid):
 def get_one_char(storyid, charid):
     try:
         character = Character.get_by_id(charid)
-        story = Story.get_by_id(storyid)
-        if (character.story_id != story):
-            return jsonify(error='Character does not exist.'), 404
         return jsonify(model_to_dict(character)), 200
     except DoesNotExist:
         return jsonify(error='Character does not exist.'), 404
@@ -37,8 +35,7 @@ def get_one_char(storyid, charid):
 @story_auth
 def create_char(storyid):
     body = request.get_json()
-    story = Story.get_by_id(storyid)
-    character = Character.create(**body, story_id=story.id)
+    character = Character.create(**body, story_id=storyid)
     return jsonify(model_to_dict(character)), 201
 
 @character.route('/edit/<int:charid>', methods=['PUT'])
