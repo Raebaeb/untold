@@ -85,7 +85,7 @@ if 'DATABASE_URL' in os.environ:
     initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene, CharToIdea, SceneToIdea])
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = False
-    app.config['SESSION_COOKIE_SAMESITE'] = None
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     origins.append(os.environ.get('CLIENT_URL'))
 
 
