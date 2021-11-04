@@ -4,16 +4,16 @@ from flask_login import LoginManager, login_manager
 
 from db import DATABASE, initialize
 
-from user import User
-from story import Story
-from character import Character
-from scene import Scene
-from idea import Idea
-from timeline import Timeline
-from event import Event
-from char_to_idea import CharToIdea
-from char_to_scene import CharToScene
-from scene_to_idea import SceneToIdea
+from models.user import User
+from models.story import Story
+from models.character import Character
+from models.scene import Scene
+from models.idea import Idea
+from models.timeline import Timeline
+from models.event import Event
+from models.char_to_idea import CharToIdea
+from models.char_to_scene import CharToScene
+from models.scene_to_idea import SceneToIdea
 
 from resources.users import user
 from resources.stories import story
@@ -55,13 +55,7 @@ def after_request(response):
 def index():
     return 'This is the root route'
 
-CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(story, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(character, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(scene, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(idea, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(timeline, origins=['http://localhost:3000'], supports_credentials=True)
-CORS(event, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
 
 app.register_blueprint(user)
 app.register_blueprint(story)
