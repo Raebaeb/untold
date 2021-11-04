@@ -1,4 +1,3 @@
-import useState from 'react';
 
 const TextArea = (props) => {
   const { label } = props.character

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { createStory, editStory, getStory } from '../../services'
-import Form from '../../components/form/Form';
+import { Form } from '../../components';
 import { storyFields } from '../../utils/constants';
 
 const StoryForm = () => {

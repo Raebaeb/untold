@@ -1,25 +1,24 @@
-import { useState } from 'react';
-import Input from './Input'
-import TextArea from './TextArea';
-import Dropdown from '../dropdown/Dropdown'
+import Input from "./Input";
+import TextArea from "./TextArea";
+import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
-
+  const { handleSubmit, obj, fieldsList, } = props;
   // pass in handleSubmit, Title of object, fieldsList, state/setState
 
   return (
-    <form onSubmit={props.handleSubmit}>
-      {props.fieldsList.map((field) => {
+    <form onSubmit={handleSubmit}>
+      {fieldsList.map((field) => {
         if (field.type == "input") {
-          <Input label={field.label} />
+          (<Input label={field.label} state={field.state}/>);
         } else if (field.type == "textarea") {
-          <TextArea label={field.label}/>
+          (<TextArea label={field.label} />);
         } else {
-          <Dropdown />
+          (<Dropdown />);
         }
-  })}
+      })}
 
-      <button>Save {props.obj}</button>
+      <button>Save {obj}</button>
     </form>
   );
 };

@@ -9,7 +9,7 @@ const Input = (props) => {
       <input 
         id={label}
         value={state}
-        onChange={(e) => setState(e.target.value)}
+        onChange={(e) => (e.target.value)}
       />
     </div>
   );
