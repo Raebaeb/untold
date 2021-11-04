@@ -1,15 +1,21 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 const Input = (props) => {
+
+  const [state, setState] = useState("")
   const { label } = props.character
-  const { state, setState } = props
+
+  useEffect(() => {
+    setState(props.state)
+  }, [props.state])
+
   return (
     <div>
       <label htmlFor={label}>{label}</label>
       <input 
         id={label}
         value={state}
-        onChange={(e) => (e.target.value)}
+        onChange={(e) => setState(e.target.value)}
       />
     </div>
   );

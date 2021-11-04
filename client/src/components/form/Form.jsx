@@ -3,15 +3,15 @@ import TextArea from "./TextArea";
 import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
+  // pass in handleSubmit, Title of object, fieldsList
   const { handleSubmit, obj, fieldsList, } = props;
-  // pass in handleSubmit, Title of object, fieldsList, state/setState
 
   return (
     <form onSubmit={handleSubmit}>
       {fieldsList.map((field) => {
-        if (field.type == "input") {
+        if (field.type === "input") {
           (<Input label={field.label} state={field.state}/>);
-        } else if (field.type == "textarea") {
+        } else if (field.type === "textarea") {
           (<TextArea label={field.label} />);
         } else {
           (<Dropdown />);

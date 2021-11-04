@@ -23,7 +23,6 @@ const SceneForm = () => {
         setParticipants(scene.participants);
         setSummary(scene.summary);
         setNotes(scene.notes);
-        setCharacters
       });
     }
     getAllCharacters(storyId).then((storyCharacters) => setCharacters(storyCharacters))
