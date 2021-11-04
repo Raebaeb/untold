@@ -4,7 +4,7 @@ from flask_login import login_required, logout_user, login_user
 from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
-from user import User
+from models.user import User
 
 user = Blueprint('users', __name__, url_prefix='/auth/user')
 

@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 from peewee import *
-from base import BaseModel
+from models.base import BaseModel
 
 class User(UserMixin, BaseModel):
     email = CharField(unique=True)

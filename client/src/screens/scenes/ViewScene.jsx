@@ -8,18 +8,22 @@ const ViewScene = () => {
 
   useEffect(() => {
     if (params.scene) {
-      getScene(params.id, params.scene).then((fetchedScene) => setScene(fetchedScene))
-    }
-  }, [])
+      getScene(params.id, params.scene).then((fetchedScene) => {
+        setScene(fetchedScene)
+      });
+      console.log(scene);}
+    }, [params]);
 
   return (
     <section id="scene-page">
       <h2>{scene.title}</h2>
       <h3>{scene.location}</h3>
-      <h4>Participating Characters:</h4>
-      {scene.linked_chars.map((character) => (
-        <li>{character.name}</li>
-      ))}
+      <article id="linked-chars-list">
+        <h4>Participating Characters:</h4>
+        {scene.linked_chars?.map((character) => (
+          <li>{character.name}</li>
+        ))}
+      </article>
       <h4>Additional Participants: {scene.participants}</h4>
       <p>Summary: {scene.summary}</p>
       <p>Notes: {scene.notes}</p>

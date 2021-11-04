@@ -53,15 +53,12 @@ const StoryForm = () => {
         type="text"
         value={genre}
         onChange={(e) => setGenre(e.target.value)}
-        required
       />
       <label htmlFor="description">Description:</label>
-      <input
+      <textarea
         id="description"
-        type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        required
       />
       <button type="submit">Save Story</button>
     </form>

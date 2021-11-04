@@ -1,8 +1,8 @@
 from peewee import *
 from db import DATABASE
 
-from scene import Scene
-from idea import Idea
+from models.scene import Scene
+from models.idea import Idea
 
 class SceneToIdea(Model):
     scene_id = ForeignKeyField(Scene, backref='scenetoideas')

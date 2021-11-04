@@ -1,7 +1,6 @@
 from peewee import *
-from base import BaseModel
-
-from story import Story
+from models.base import BaseModel
+from models.story import Story
 
 class Scene(BaseModel):
     title = CharField()

@@ -4,10 +4,10 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
-from story import Story
-from idea import Idea
-from char_to_idea import CharToIdea
-from scene_to_idea import SceneToIdea
+from models.story import Story
+from models.idea import Idea
+from models.char_to_idea import CharToIdea
+from models.scene_to_idea import SceneToIdea
 
 idea = Blueprint('ideas', __name__, url_prefix='/api/<int:storyid>/ideas')
 

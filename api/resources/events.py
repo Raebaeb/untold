@@ -5,9 +5,9 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
-from story import Story
-from timeline import Timeline
-from event import Event
+from models.story import Story
+from models.timeline import Timeline
+from models.event import Event
 
 event = Blueprint('events', __name__, url_prefix='/api/<int:storyid>/timeline/events')
 

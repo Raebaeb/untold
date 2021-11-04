@@ -1,7 +1,7 @@
 from flask import jsonify
 from functools import wraps
 from flask_login import current_user
-from story import Story
+from models.story import Story
 
 def story_auth(func):
     @wraps(func)

@@ -4,8 +4,7 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
-from story import Story
-from timeline import Timeline
+from models.timeline import Timeline
 
 timeline = Blueprint('timelines', __name__, url_prefix='/api/<int:storyid>/timeline')
 

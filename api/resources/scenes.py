@@ -4,10 +4,10 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
-from story import Story
-from scene import Scene
-from character import Character
-from char_to_scene import CharToScene
+from models.story import Story
+from models.scene import Scene
+from models.character import Character
+from models.char_to_scene import CharToScene
 
 scene = Blueprint('scenes', __name__, url_prefix='/api/<int:storyid>/scenes')
 
@@ -33,11 +33,10 @@ def get_one_scene(storyid, sceneid):
         story = Story.get_by_id(storyid)
         scene = Scene.get_by_id(sceneid)
         if (scene.story_id != story):
-            return jsonify(error='Scene does not exist.'), 404
+            raise DoesNotExist
         get_links = (CharToScene.select(CharToScene.character_id)
-        .where(CharToScene.scene_id == scene))
-        scene_dict = model_to_dict(scene)
-        del scene_dict['story_id']
+        .where(CharToScene.scene_id == sceneid))
+        scene_dict = model_to_dict(scene, recurse=False)
         scene_dict['linked_chars'] = []
         for link in get_links:
             link_dict = model_to_dict(link)
@@ -61,15 +60,13 @@ def create_scene(storyid):
         for char in add.values():
             character = Character.get_by_id(char)
             CharToScene.create(scene_id=scene, character_id=character)
-    scene_dict = model_to_dict(scene)
-    del scene_dict['story_id']
+    scene_dict = model_to_dict(scene, recurse=False)
     return jsonify(scene_dict), 201
 
 @scene.route('/edit/<int:sceneid>', methods=['PUT'])
 @login_required
 @story_auth
 def edit_scene(storyid, sceneid):
-    # story = Story.get_by_id(storyid)
     try:
         body = request.get_json()
         scene_info = body['sceneInfo']
@@ -82,15 +79,13 @@ def edit_scene(storyid, sceneid):
         scene = Scene.get_by_id(sceneid)
         if (remove != None):
             for char in remove.values():
-                # character = Character.get_by_id(char)
                 CharToScene.delete().where((CharToScene.scene_id == sceneid) & (CharToScene.character_id == char)).execute()
         if (add != None):
             for char in add.values():
                 character = Character.get_by_id(char)
                 if character:
                     CharToScene.get_or_create(scene_id=scene, character_id=character)
-        scene_dict = model_to_dict(scene)
-        del scene_dict['story_id']
+        scene_dict = model_to_dict(scene, recurse=False)
         return jsonify(scene_dict), 203
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404

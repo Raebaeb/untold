@@ -1,6 +1,6 @@
 from peewee import *
-from base import BaseModel
-from timeline import Timeline
+from models.base import BaseModel
+from models.timeline import Timeline
 
 class Event(BaseModel):
     timeline_id = ForeignKeyField(Timeline, backref='events')
