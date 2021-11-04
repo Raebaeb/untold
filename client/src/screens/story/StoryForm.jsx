@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { createStory, editStory, getStory } from '../../services'
+import Form from '../../components/form/Form';
+import { storyFields } from '../../utils/constants';
 
 const StoryForm = () => {
   const [title, setTitle] = useState("");
@@ -18,7 +20,6 @@ const StoryForm = () => {
       })
     }
   }, [params.id])
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -38,30 +39,7 @@ const StoryForm = () => {
   return (
     <section>
       {params.id ? (<h2>Edit Story</h2>) : (<h2>Spin a new tale...</h2>)}
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-      <input
-        id="title"
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <label htmlFor="genre">Genre:</label>
-      <input
-        id="genre"
-        type="text"
-        value={genre}
-        onChange={(e) => setGenre(e.target.value)}
-      />
-      <label htmlFor="description">Description:</label>
-      <textarea
-        id="description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button type="submit">Save Story</button>
-    </form>
+      <Form handleSubmit={handleSubmit} obj={'Story'} fieldsList={storyFields} />
     </section>
   );
 };
