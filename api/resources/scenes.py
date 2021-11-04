@@ -42,8 +42,8 @@ def get_one_scene(storyid, sceneid):
         for link in get_links:
             link_dict = model_to_dict(link)
             for key, val in link_dict['character_id'].items():
-                if key == 'id':
-                    scene_dict['linked_chars'].append({'id':f'{val}'})
+                if key == 'name':
+                    scene_dict['linked_chars'].append({'name':f'{val}'})
         return jsonify(scene_dict), 200
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
@@ -83,7 +83,7 @@ def edit_scene(storyid, sceneid):
         if (remove != None):
             for char in remove.values():
                 # character = Character.get_by_id(char)
-                CharToScene.delete().where(CharToScene.scene_id == sceneid, CharToScene.character_id == char)
+                CharToScene.delete().where((CharToScene.scene_id == sceneid) & (CharToScene.character_id == char)).execute()
         if (add != None):
             for char in add.values():
                 character = Character.get_by_id(char)

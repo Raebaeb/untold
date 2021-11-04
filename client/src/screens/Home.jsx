@@ -19,8 +19,11 @@ const Home = (props) => {
       <h2>Account home</h2>
       <Link to='/new-story'>+ New Story</Link>
       {stories.map((story) => (
+        <div className='story-globe-container'>
         <Link to={`story/${story.id}`}>{story.title}</Link>
-      ))}
+        <Link to={`${story.id}/scenes`}>Scenes</Link>
+        </div>
+        ))}
       <Link to='/new-story'>+ New Story</Link>
     </section>
   );

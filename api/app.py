@@ -74,4 +74,4 @@ app.register_blueprint(event)
 if __name__ == '__main__': 
     print("app.py is running")
     initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene, CharToIdea, SceneToIdea])
-    app.run(debug=DEBUG, port=PORT)  
+    app.run(debug=DEBUG, port=PORT)
