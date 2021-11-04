@@ -4,9 +4,6 @@ const TextArea = (props) => {
   const label = props.label
   const [state, setState] = useState("")
 
-  useEffect(() => {
-    setState(props.state)
-  }, [props.state])
   return (
     <div className="text-area-container">
       <label htmlFor={label}>{label}</label>

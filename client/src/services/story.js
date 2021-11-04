@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const apiURL = process.env.NODE_ENV === "development"
-  ? "http://localhost:8000"
-  : process.env.API_URL;
+  ? "http://localhost:8000/"
+  : process.env.REACT_APP_API_URL;
 
 export const getAllStories = async () => {
   try {
-    const response = await axios.get(`/${apiURL}`)
+    const response = await axios.get(`${apiURL}/api/stories`)
     return response.data
   } catch (e) {
     console.error(e.message);
