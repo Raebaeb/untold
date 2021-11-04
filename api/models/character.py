@@ -4,9 +4,9 @@ from models.story import Story
 
 class Character(BaseModel):
     name = CharField()
-    age = CharField()
-    occupation = CharField()
+    age = CharField(null=True)
+    occupation = CharField(null=True)
     abilities = TextField(null=True)
-    appearance = TextField()
+    appearance = TextField(null=True)
     goals = TextField(null=True)
     story_id = ForeignKeyField(Story, backref='characters')

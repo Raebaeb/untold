@@ -6,4 +6,4 @@ class Event(BaseModel):
     timeline_id = ForeignKeyField(Timeline, backref='events')
     position = IntegerField(unique=True)
     title = CharField()
-    description = CharField()
+    description = CharField(null=True)
