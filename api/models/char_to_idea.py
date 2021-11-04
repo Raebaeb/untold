@@ -1,8 +1,8 @@
 from peewee import *
 from db import DATABASE
 
-from character import Character
-from idea import Idea
+from models.character import Character
+from models.idea import Idea
 
 class CharToIdea(Model):
     character_id = ForeignKeyField(Character, backref='chartoideas')

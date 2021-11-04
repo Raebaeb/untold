@@ -1,14 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
+import { defaultRoute, register, login, logout } from "./user"
+import { getAllStories, getStory, createStory, editStory, deleteStory } from "./story"
+import { getAllScenes, getScene, createScene, editScene, deleteScene } from './scene'
+import { getAllCharacters } from './character'
 
-const apiURL = process.env.NODE_ENV === "development"
-  ? "devURL"
-  : "prodURL";
+axios.defaults.withCredentials = true;
 
-  export const defaultRoute = async () => {
-    try {
-      const response = await axios.get(apiURL);
-      return response.data;
-    } catch (e) {
-      console.error(e.message)
-    }
-  }
+export {
+  defaultRoute,
+  register,
+  login,
+  logout,
+  getAllStories,
+  getStory,
+  createStory,
+  editStory,
+  deleteStory,
+  getAllScenes,
+  getScene,
+  createScene,
+  editScene,
+  deleteScene,
+  getAllCharacters,
+}

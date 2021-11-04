@@ -4,6 +4,25 @@ from flask_login import LoginManager, login_manager
 
 from db import DATABASE, initialize
 
+from models.user import User
+from models.story import Story
+from models.character import Character
+from models.scene import Scene
+from models.idea import Idea
+from models.timeline import Timeline
+from models.event import Event
+from models.char_to_idea import CharToIdea
+from models.char_to_scene import CharToScene
+from models.scene_to_idea import SceneToIdea
+
+from resources.users import user
+from resources.stories import story
+from resources.characters import character
+from resources.scenes import scene
+from resources.ideas import idea
+from resources.timelines import timeline
+from resources.events import event
+
 DEBUG = True
 PORT = 8000
 
@@ -16,9 +35,9 @@ app.secret_key = '7c9b2323c24243748a25f87c8ed733aa'
 login_manager.init_app(app)
 
 @login_manager.user_loader
-def load_user(userid):
+def load_user(user):
     try:
-        return User.get(User.id == userid)
+        return User.get(User.id == user)
     except:
         return None
 
@@ -34,9 +53,19 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    return 'This is the root route', 200
+    return 'This is the root route'
 
-if __name__ == '__main__':
+CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
+
+app.register_blueprint(user)
+app.register_blueprint(story)
+app.register_blueprint(character)
+app.register_blueprint(scene)
+app.register_blueprint(idea)
+app.register_blueprint(timeline)
+app.register_blueprint(event)
+
+if __name__ == '__main__': 
     print("app.py is running")
-    initialize([])
+    initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene, CharToIdea, SceneToIdea])
     app.run(debug=DEBUG, port=PORT)
