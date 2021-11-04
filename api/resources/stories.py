@@ -39,10 +39,9 @@ def get_one_story(storyid):
 @login_required
 def new_story():
     body = request.get_json()
-    story = Story.create(**body, user=current_user)
+    story = Story.create(**body, user=current_user.id)
     Timeline.create(story_id=story)
-    story_dict =  model_to_dict(story)
-    del story_dict['user']
+    story_dict =  model_to_dict(story, recurse=False)
     return jsonify(story_dict), 201
 
 
