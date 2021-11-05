@@ -17,9 +17,9 @@ const StoryForm = () => {
     if (params.id) {
       getStory(params.id).then((story) => {
         setStory(
-          { title: story.title },
-          { genre: story.genre },
-          { description: story.description }
+          {title: story.title,
+          genre: story.genre,
+          description: story.description }
         );
       });
     }

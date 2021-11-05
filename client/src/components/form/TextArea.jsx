@@ -1,12 +1,12 @@
 
-const TextArea = ({ label, value, update }) => {
+const TextArea = ({ label, fieldKey, update }) => {
 
   return (
     <div className="text-area-container">
       <label htmlFor={label}>{label}</label>
       <textarea 
         id={label}
-        value={value}
+        name={fieldKey}
         onChange={(e) => update(e.target.value)}
       />
     </div>

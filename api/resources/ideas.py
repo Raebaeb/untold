@@ -35,14 +35,21 @@ def get_one_idea(storyid, ideaid):
     try:
         if (idea.story_id != story):
             raise DoesNotExist
-        get_links = (Idea.select(Idea, CharToIdea.character_id, SceneToIdea.scene_id).join(CharToIdea).where(
-            (CharToIdea.idea_id == Idea) | (SceneToIdea.idea_id == Idea)))
+        get_chars = (CharToIdea.select(CharToIdea.character_id).where(CharToIdea.idea_id == ideaid))
+        get_scenes = (SceneToIdea.select(SceneToIdea.scene_id).where(SceneToIdea.idea_id == ideaid))
         idea_dict = model_to_dict(idea, recurse=False)
         links = {}
-        for link in get_links:
+        for link in get_chars:
             link_dict = model_to_dict(link)
-            links['link'] = link_dict
-        return jsonify({'ideaInfo': idea_dict, 'links': links}), 200
+            for key, val in link_dict['character_id'].items():
+                if key == 'id':
+                    links['character'] = val
+        for link in get_scenes:
+            link_dict = model_to_dict(link)
+            for key, val in link_dict['scene_id'].items():
+                if key == 'id':
+                    links['scene'] = val
+        return jsonify({ 'ideaInfo': idea_dict, 'links': links }), 200
     except DoesNotExist:
         return jsonify(error='Idea does not exist.'), 404
     except Exception as e:
@@ -100,14 +107,13 @@ def edit_idea(storyid, ideaid):
             for key, val in add.items():
                 if key == "character":
                     character = Character.get_by_id(val)
-                    if not character:
+                    if character:
                         CharToIdea.get_or_create(
                             idea_id=ideaid, character_id=character)
                 elif key == "scene":
                     scene = SceneToIdea.get_by_id(val)
-                    if not scene:
-                        SceneToIdea.get_or_create(
-                            idea_id=ideaid, scene_id=scene)
+                    if scene:
+                        SceneToIdea.get_or_create(idea_id=ideaid, scene_id=scene)
         return jsonify(model_to_dict(idea, recurse=False)), 203
     except DoesNotExist:
         return jsonify(error='Idea does not exist.'), 404

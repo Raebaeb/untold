@@ -57,6 +57,7 @@ function App() {
         </Route>
         <Route path='/:id/ideas/edit/:story'>
           <Screen.IdeaForm />
+        </Route>
         <Route path='/:id/scenes'>
           <Screen.SceneMain />
         </Route>
@@ -71,7 +72,6 @@ function App() {
         </Route>
         <Route path='/:id/timeline'>
           <Screen.Timeline />
-        </Route>
         </Route>
         </main>
       </Switch>

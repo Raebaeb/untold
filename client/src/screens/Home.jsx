@@ -22,6 +22,9 @@ const Home = (props) => {
         <div className='story-globe-container'>
         <Link to={`story/${story.id}`}>{story.title}</Link>
         <Link to={`${story.id}/scenes`}>Scenes</Link>
+        <Link to={`${story.id}/ideas`}>Ideas</Link>
+        <Link to={`${story.id}/characters`}>Characters</Link>
+        <Link to={`${story.id}/timeline`}>Timeline</Link>
         </div>
         ))}
       <Link to='/new-story'>+ New Story</Link>

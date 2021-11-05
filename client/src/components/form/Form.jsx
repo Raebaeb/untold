@@ -10,9 +10,9 @@ const Form = (props) => {
     <form onSubmit={handleSubmit}>
       {fieldsList.map((field, i) => {
         return field.type === "input" ? (
-          <Input key={i} label={field.label} state={field.state} update={update}/>
+          <Input key={i} label={field.label} key={field.key} update={update}/>
         ) : field.type === "textarea" ? (
-          <TextArea label={field.label} key={i} state={field.state} update={update}/>
+          <TextArea label={field.label} key={i} fieldKey={field.key} update={update}/>
         ) : (
           <h2>it aint workin</h2>
         );

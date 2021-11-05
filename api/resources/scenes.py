@@ -86,9 +86,8 @@ def edit_scene(storyid, sceneid):
         if len(add) != 0:
             for char in add.values():
                 character = Character.get_by_id(char)
-                if not character:
-                    CharToScene.get_or_create(
-                        scene_id=scene, character_id=character)
+                if character:
+                    CharToScene.get_or_create(scene_id=scene, character_id=character)
         scene_dict = model_to_dict(scene, recurse=False)
         return jsonify(scene_dict), 203
     except DoesNotExist:

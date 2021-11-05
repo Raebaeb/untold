@@ -1,13 +1,11 @@
-
-const Input = ({ label, value, update }) => {
-
+const Input = ({ label, fieldKey, update }) => {
   return (
     <div className="input-container">
       <label htmlFor={label}>{label}</label>
-      <input 
+      <input
         id={label}
+        name={fieldKey}
         type="text"
-        value={value}
         onChange={(e) => update(e.target.value)}
       />
     </div>

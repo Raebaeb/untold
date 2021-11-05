@@ -12,7 +12,7 @@ const ViewScene = () => {
         setScene(fetchedScene)
       });
       console.log(scene);}
-    }, [params]);
+    }, [params.scene]);
 
   return (
     <section id="scene-page">
