@@ -22,7 +22,7 @@ export const getIdea = (storyid, ideaid) => {
   }
 };
 
-export const newIdea = (storyid) => {
+export const createIdea = (storyid) => {
   try {
     const response = await axios.post(`${apiURL}/api/${storyid}/ideas/new`);
     return response.data;

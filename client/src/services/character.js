@@ -22,7 +22,7 @@ export const getCharacter = async (storyid, charid) => {
   }
 };
 
-export const newCharacter = async (storyid) => {
+export const createCharacter = async (storyid) => {
   try {
     const response = await axios.post(`${apiURL}/api/${storyid}/characters/new`);
     return response.data;
