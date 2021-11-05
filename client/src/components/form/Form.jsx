@@ -4,7 +4,7 @@ import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
   // pass in handleSubmit, Title of object, fieldsList
-  const { handleSubmit, obj, fieldsList } = props;
+  const { handleSubmit, obj, fieldsList, story, setStory } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -17,7 +17,6 @@ const Form = (props) => {
           <h2>it aint workin</h2>
         );
       })}
-
       <button>Save {obj}</button>
     </form>
   );
