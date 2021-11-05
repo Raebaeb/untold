@@ -25,6 +25,11 @@ const StoryForm = () => {
     }
   }, [params.id]);
 
+  const updateStory = (obj) => {
+    setStory({ ...story, ...obj });
+    return;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (params.id) {
@@ -40,10 +45,9 @@ const StoryForm = () => {
       {params.id ? <h2>Edit Story</h2> : <h2>Spin a new tale...</h2>}
       <Form
         handleSubmit={handleSubmit}
-        obj={"Story"}
+        name={"Story"}
         fieldsList={storyFields}
-        story={story}
-        setStory={setStory}
+        update={updateStory}
       />
     </section>
   );

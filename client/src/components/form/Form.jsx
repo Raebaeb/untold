@@ -3,33 +3,21 @@ import TextArea from "./TextArea";
 import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
-  // pass in handleSubmit, Title of object, fieldsList, states
-  const {
-    handleSubmit,
-    obj,
-    fieldsList,
-    story,
-    setStory,
-    character,
-    setCharacter,
-    scene,
-    setScene,
-    idea,
-    setIdea
-  } = props;
+  // list, update, submit, name
+  const { fieldsList, update, handleSubmit, name } = props;
 
   return (
     <form onSubmit={handleSubmit}>
-      {fieldsList.map((field) => {
+      {fieldsList.map((field, i) => {
         return field.type === "input" ? (
-          <Input key={field.label} label={field.label} state={field.state} />
+          <Input key={i} label={field.label} state={field.state} update={update}/>
         ) : field.type === "textarea" ? (
-          <TextArea label={field.label} key={field.label} state={field.state} />
+          <TextArea label={field.label} key={i} state={field.state} update={update}/>
         ) : (
           <h2>it aint workin</h2>
         );
       })}
-      <button>Save {obj}</button>
+      <button>Save {name}</button>
     </form>
   );
 };

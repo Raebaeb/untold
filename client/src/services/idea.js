@@ -4,7 +4,7 @@ const apiURL = process.env.NODE_ENV === "development"
   ? "http://localhost:8000/"
   : process.env.API_URL;
 
-export const getAllIdeas = (storyid) => {
+export const getAllIdeas = async (storyid) => {
   try {
     const response = await axios.get(`${apiURL}/api/${storyid}/ideas`);
     return response.data;
@@ -13,7 +13,7 @@ export const getAllIdeas = (storyid) => {
   }
 };
 
-export const getIdea = (storyid, ideaid) => {
+export const getIdea = async (storyid, ideaid) => {
   try {
     const response = await axios.get(`${apiURL}/api/${storyid}/ideas/${ideaid}`);
     return response.data;
@@ -22,7 +22,7 @@ export const getIdea = (storyid, ideaid) => {
   }
 };
 
-export const createIdea = (storyid) => {
+export const createIdea = async (storyid) => {
   try {
     const response = await axios.post(`${apiURL}/api/${storyid}/ideas/new`);
     return response.data;
@@ -31,7 +31,7 @@ export const createIdea = (storyid) => {
   }
 };
 
-export const editIdea = (storyid, ideaid) => {
+export const editIdea = async (storyid, ideaid) => {
   try {
     const response = await axios.put(`${apiURL}/api/${storyid}/ideas/edit/${ideaid}`);
     return response.data;
@@ -40,7 +40,7 @@ export const editIdea = (storyid, ideaid) => {
   }
 };
 
-export const deleteIdea = (storyid, ideaid) => {
+export const deleteIdea = async (storyid, ideaid) => {
   try {
     const response = await axios.delete(`${apiURL}/api/${storyid}/ideas/delete/${ideaid}`);
     return response.data;

@@ -1,16 +1,13 @@
-import { useState, useEffect } from "react";
 
-const TextArea = (props) => {
-  const label = props.label
-  const [state, setState] = useState("")
+const TextArea = ({ label, value, update }) => {
 
   return (
     <div className="text-area-container">
       <label htmlFor={label}>{label}</label>
       <textarea 
         id={label}
-        value={state}
-        onChange={(e) => setState(e.target.value)}
+        value={value}
+        onChange={(e) => update(e.target.value)}
       />
     </div>
   );

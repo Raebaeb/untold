@@ -1,5 +1,5 @@
 
-const Input = ({ label, state, setState }) => {
+const Input = ({ label, value, update }) => {
 
   return (
     <div className="input-container">
@@ -7,8 +7,8 @@ const Input = ({ label, state, setState }) => {
       <input 
         id={label}
         type="text"
-        value={state}
-        onChange={(e) => setState(e.target.value)}
+        value={value}
+        onChange={(e) => update(e.target.value)}
       />
     </div>
   );
