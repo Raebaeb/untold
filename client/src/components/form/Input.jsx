@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react';
 
-const Input = (props) => {
-
-  const label = props.label
-  const [state, setState] = useState("")
+const Input = ({ label, state, setState }) => {
 
   return (
     <div className="input-container">

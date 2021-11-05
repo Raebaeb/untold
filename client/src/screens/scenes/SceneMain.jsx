@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getAllScenes } from "../../services";
-import { Link } from "react-router-dom";
 
 const SceneMain = () => {
   const [scenes, setScenes] = useState([]);
   const params = useParams();
-
 
   useEffect(() => {
     getAllScenes(params.id).then((fetchedScenes) => setScenes(fetchedScenes))

@@ -5,9 +5,6 @@ import { Form } from "../../components";
 import { storyFields } from "../../utils/constants";
 
 const StoryForm = () => {
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [description, setDescription] = useState("");
   const [story, setStory] = useState({
     title: "",
     genre: "",
@@ -30,11 +27,6 @@ const StoryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const story = {
-      title,
-      genre,
-      description,
-    };
     if (params.id) {
       await editStory(params.id, story);
     } else {

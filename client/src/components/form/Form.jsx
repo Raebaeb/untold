@@ -3,8 +3,20 @@ import TextArea from "./TextArea";
 import Dropdown from "../dropdown/Dropdown";
 
 const Form = (props) => {
-  // pass in handleSubmit, Title of object, fieldsList
-  const { handleSubmit, obj, fieldsList, story, setStory } = props;
+  // pass in handleSubmit, Title of object, fieldsList, states
+  const {
+    handleSubmit,
+    obj,
+    fieldsList,
+    story,
+    setStory,
+    character,
+    setCharacter,
+    scene,
+    setScene,
+    idea,
+    setIdea
+  } = props;
 
   return (
     <form onSubmit={handleSubmit}>
