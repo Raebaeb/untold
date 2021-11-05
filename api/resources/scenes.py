@@ -67,28 +67,36 @@ def create_scene(storyid):
 @login_required
 @story_auth
 def edit_scene(storyid, sceneid):
+    body = request.get_json()
+    scene_info = body['sceneInfo']
+    add = body['addToScene']
+    remove = body['removeFromScene']
     try:
-        body = request.get_json()
-        scene_info = body['sceneInfo']
-        add = body['addToScene']
-        remove = body['removeFromScene']
-        (Scene
-            .update(**scene_info)
-            .where(Scene.id == sceneid)
-            .execute())
+        if len(scene_info) != 0:
+            (Scene
+                .update(**scene_info)
+                .where(Scene.id == sceneid)
+                .execute())
         scene = Scene.get_by_id(sceneid)
-        if (remove != None):
+        if len(remove) != 0:
             for char in remove.values():
-                CharToScene.delete().where((CharToScene.scene_id == sceneid) & (CharToScene.character_id == char)).execute()
-        if (add != None):
+                query = CharToScene.delete().where(
+                    (CharToScene.scene_id == sceneid) &
+                    (CharToScene.character_id == char))
+                query.execute()
+        if len(add) != 0:
             for char in add.values():
                 character = Character.get_by_id(char)
-                if character:
-                    CharToScene.get_or_create(scene_id=scene, character_id=character)
-        scene_dict = model_to_dict(scene, recurse=False)
+                if not character:
+                    CharToScene.get_or_create(
+                        scene_id=scene, character_id=character)
+        scene_dict = model_to_dict(scene)
         return jsonify(scene_dict), 203
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
+    except Exception as e:
+        print(e)
+        return jsonify(error="Error ocurred"), 404
 
 @scene.route('/delete/<int:sceneid>', methods=['DELETE'])
 @login_required

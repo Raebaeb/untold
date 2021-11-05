@@ -47,9 +47,9 @@ def create_idea(storyid):
 @login_required
 @story_auth
 def edit_idea(storyid, ideaid):
+    body = request.get_json()
+    idea_info = body['ideaInfo']
     try:
-        body = request.get_json()
-        idea_info = body['ideaInfo']
         (Idea
             .update(**idea_info)
             .where(Idea.id == ideaid, Idea.story_id == storyid)
