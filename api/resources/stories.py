@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 from services import story_auth
 from models.story import Story
-from models.timeline import Timeline
+
 
 story = Blueprint('stories', __name__, url_prefix='/api/stories')
 
@@ -67,12 +67,7 @@ def edit_story(storyid):
 @login_required
 @story_auth
 def delete_story(storyid):
-    story = Story.get_by_id(storyid)
     try:
-        (Timeline
-            .delete()
-            .where(Timeline.story_id == story)
-            .execute())
         (Story
             .delete()
             .where(Story.id == storyid)

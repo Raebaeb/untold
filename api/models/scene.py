@@ -8,4 +8,4 @@ class Scene(BaseModel):
     location = TextField(null=True)
     summary = TextField(null=True)
     notes = TextField(null=True)
-    story_id = ForeignKeyField(Story, backref='scenes')
+    story_id = ForeignKeyField(Story, backref='scenes', on_delete='CASCADE')
