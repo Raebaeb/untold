@@ -37,14 +37,15 @@ def get_one_scene(storyid, sceneid):
         get_links = (CharToScene.select(CharToScene.character_id)
         .where(CharToScene.scene_id == sceneid))
         scene_dict = model_to_dict(scene, recurse=False)
-        characters = {}
+        characters = []
         for link in get_links:
             link_dict = model_to_dict(link)
             for key, val in link_dict['character_id'].items():
                 if key == 'id':
-                    id = val
+                    new_dict = {'id': val}
                 if key == 'name':
-                    characters[val] = id
+                    new_dict['name'] = val
+                    characters.append(new_dict)
         return jsonify({ 'sceneInfo': scene_dict, 'linkedChars': characters }), 200
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404

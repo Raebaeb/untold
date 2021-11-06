@@ -17,7 +17,7 @@ const ViewStory = () => {
       <h4>{story.genre}</h4>
       <p>{story.description}</p>
       {/* Add Links to characters, scenes, ideas, timeline */}
-      <Link to={`/edit-story/${story.id}`}>
+      <Link to={`/story/edit/${story.id}`}>
         <button>Edit</button>
       </Link>
       <DeleteBtn deleteFunc={deleteStory} name={story.title} storyid={story.id}/>

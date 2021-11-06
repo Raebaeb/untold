@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import {
   createScene,
   editScene,
@@ -10,65 +10,63 @@ import { sceneFields } from "../../utils/constants";
 import { Form } from "../../components";
 
 const SceneForm = () => {
-  const [linkedChars, setLinkedChars] = useState({});
+  const [linkedChars, setLinkedChars] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
-  const [scene, setScene] = useState(
-    { sceneInfo: {
-      title: "",
-      location: "",
-      participants: "",
-      summary: "",
-      notes: "",
-    },
-    addToScene: [],
-    removeFromScene: []
-    });
-
+  const [add, setAdd] = useState([]);
+  const [remove, setRemove] = useState([]);
+  const [scene, setScene] = useState({
+    title: "",
+    location: "",
+    participants: "",
+    summary: "",
+    notes: "",
+  });
 
   const history = useHistory();
   const params = useParams();
 
-  const storyId = params.id;
-  const sceneId = params.scene;
-
   useEffect(() => {
-    if (sceneId) {
-      getScene(storyId, sceneId).then((fetchedScene) => {
+    if (params.scene) {
+      getScene(params.id, params.scene).then((fetchedScene) => {
         const { sceneInfo, linkedChars } = fetchedScene;
         setScene({
-          ...scene,
-          sceneInfo: {
-            title: sceneInfo.title,
-            location: sceneInfo.location,
-            participants: sceneInfo.participants,
-            summary: sceneInfo.summary,
-            notes: sceneInfo.notes,
-          },
+          title: sceneInfo.title,
+          location: sceneInfo.location,
+          participants: sceneInfo.participants,
+          summary: sceneInfo.summary,
+          notes: sceneInfo.notes,
         });
-        setLinkedChars(linkedChars)
+        setLinkedChars(linkedChars);
       });
     }
-    getAllCharacters(storyId).then((fetchedChars) => setAllCharacters(fetchedChars))
-  }, [sceneId]);
+    getAllCharacters(params.id).then((fetchedChars) =>
+      setAllCharacters(fetchedChars)
+    );
+  }, [params.scene]);
 
   const updateScene = (obj) => {
     setScene({ ...scene, ...obj });
     return;
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (sceneId) {
-      await editScene(storyId, sceneId, scene);
+    const newScene = {
+      sceneinfo: scene,
+      addToScene: add,
+      removeFromScene: remove,
+    };
+    if (params.scene) {
+      await editScene(params.id, params.scene, newScene);
     } else {
-      await createScene(storyId, scene);
+      await createScene(params.id, newScene);
     }
-    history.push(`${storyId}/scenes`);
+    history.push(`/${params.id}/scenes`);
   };
 
   return (
     <section>
-      {storyId ? <h2>Edit Scene</h2> : <h2>New Scene</h2>}
+      {params.id ? <h2>Edit Scene</h2> : <h2>New Scene</h2>}
       <Form
         handleSubmit={handleSubmit}
         name={"Scene"}
@@ -76,6 +74,10 @@ const SceneForm = () => {
         update={updateScene}
         state={scene}
       />
+      <h5>Linked Characters:</h5>
+      {linkedChars.map((char) => (
+        <Link to={`/${params.id}/characters/${char.id}`}>{char.name}</Link>
+      ))}
     </section>
   );
 };

@@ -15,9 +15,9 @@ const Home = (props) => {
   }, []);
   return (
     <section>
-      <Link to="/new-story">+ New Story</Link>
+      <Link to="/story/new">+ New Story</Link>
       {stories.length === 0 ? (
-        <Link to="/new-story">+ New Story</Link>
+        <Link to="/story/new">+ New Story</Link>
       ) : (
         stories.map((story) => (
           <div className="story-globe-container" key={story.id}>
@@ -29,7 +29,7 @@ const Home = (props) => {
           </div>
         ))
       )}
-      <Link to="/new-story">+ New Story</Link>
+      <Link to="/story/new">+ New Story</Link>
     </section>
   );
 };

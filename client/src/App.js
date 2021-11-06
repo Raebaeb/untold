@@ -25,16 +25,16 @@ function App() {
         <Route path='/home'>
           <Screen.Home user={user}/>
         </Route>
-        <Route path='/new-story'>
+        <Route path='/story/new'>
           <Screen.StoryForm />
         </Route>
-        <Route path='/edit-story/:id'>
+        <Route path='/story/edit/:id'>
           <Screen.StoryForm />
         </Route>
         <Route path='/story/:id'>
           <Screen.ViewStory />
         </Route>
-        <Route path='/:id/characters'>
+        <Route path='/:id/characters' exact>
           <Screen.CharacterMain />
         </Route>
         <Route path='/:id/characters/new'>
@@ -43,7 +43,7 @@ function App() {
         <Route path='/:id/characters/:character'>
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/ideas'>
+        <Route path='/:id/ideas' exact>
           <Screen.IdeaMain />
         </Route>
         <Route path='/:id/ideas/new'>
@@ -52,7 +52,7 @@ function App() {
         <Route path='/:id/ideas/:story'>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/scenes'>
+        <Route path='/:id/scenes' exact>
           <Screen.SceneMain />
         </Route>
         <Route path='/:id/scenes/new'>
