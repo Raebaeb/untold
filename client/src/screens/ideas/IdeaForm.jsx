@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Form } from "../../components";
-import { getIdea, editIdea, createIdea } from '../../services'
+import { DeleteBtn, Form } from "../../components";
+import { getIdea, editIdea, createIdea, deleteIdea } from '../../services'
 import { ideaFields } from "../../utils/constants";
 
 const IdeaForm = () => {
@@ -16,10 +16,10 @@ const IdeaForm = () => {
   useEffect(() => {
     if (params.idea) {
       getIdea(params.id, params.idea).then((idea) => {
-        setIdea({ title: idea.title }, { text: idea.text });
+        setIdea({ title: idea.title, text: idea.text });
       });
     }
-  }, [params.idea]);
+  }, [params]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,10 +33,10 @@ const IdeaForm = () => {
 
   return (
     <section>
-      {params.idea ? <h2>Edit Idea</h2> : <h2>New Idea</h2>}
+      {params.idea ? <><h2>Edit Idea</h2><DeleteBtn /></> : <h2>New Idea</h2>}
       <Form
         handleSubmit={handleSubmit}
-        name={"Idea"}
+        name="Idea"
         fieldsList={ideaFields}
         update={setIdea}
       />

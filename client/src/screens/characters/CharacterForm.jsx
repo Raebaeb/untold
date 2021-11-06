@@ -11,14 +11,41 @@ const CharacterForm = () => {
     occupation: "",
     abilities: "",
     appearance: "",
-    goal: ""
-  })
+    goals: "",
+  });
 
+  const history = useHistory();
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.character) {
+      getCharacter(params.id, params.character).then((char) => {
+        setCharacter({
+          name: char.name,
+          age: char.age,
+          occupation: char.occupation,
+          abilities: char.abilities,
+          appearance: char.appearance,
+          goals: char.goals,
+        });
+      });
+    }
+  }, [params]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (params.id) {
+      await editCharacter(params.id, params.character, character);
+    } else {
+      await createCharacter(params.id, character);
+    }
+    history.push(`/${params.id}/characters`);
+  };
 
   return (
     <section>
       {params.idea ? <h2>Edit Character</h2> : <h2>New Character</h2>}
-      <Form 
+      <Form
         handleSubmit={handleSubmit}
         name="Character"
         fieldsList={charFields}
