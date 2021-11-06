@@ -6,7 +6,7 @@ const Input = ({ label, fieldKey, update }) => {
         id={label}
         name={fieldKey}
         type="text"
-        onChange={(e) => update(e.target.value)}
+        onChange={(e) => update({[`${fieldKey}`]: e.target.value})}
       />
     </div>
   );

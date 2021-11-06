@@ -4,8 +4,13 @@ const DeleteBtn = ({ deleteFunc, name, storyid, elemid}) => {
   const history = useHistory();
 
   const handleDelete = async () => {
-    await deleteFunc(storyid, elemid)
-    history.push(`/${storyid}/${name}s`)
+    if (!elemid) {
+      await deleteFunc(storyid)
+      history.push('/home')
+    } else {
+      await deleteFunc(storyid, elemid)
+      history.push(`/${storyid}/${name}s`)
+    }
   }
 
   return (

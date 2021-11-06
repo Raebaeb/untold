@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
-import { getAllStories } from '../services';
-
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import { getAllStories } from "../services";
 
 const Home = (props) => {
   const [stories, setStories] = useState([]);
@@ -10,24 +9,27 @@ const Home = (props) => {
 
   useEffect(() => {
     if (!props.user) {
-      history.push('/')
+      history.push("/");
     }
-    getAllStories().then((fetchedStories) => setStories(fetchedStories))
-  }, [])
+    getAllStories().then((fetchedStories) => setStories(fetchedStories));
+  }, []);
   return (
     <section>
-      <h2>Account home</h2>
-      <Link to='/new-story'>+ New Story</Link>
-      {stories.map((story) => (
-        <div className='story-globe-container'>
-        <Link to={`story/${story.id}`}>{story.title}</Link>
-        <Link to={`${story.id}/scenes`}>Scenes</Link>
-        <Link to={`${story.id}/ideas`}>Ideas</Link>
-        <Link to={`${story.id}/characters`}>Characters</Link>
-        <Link to={`${story.id}/timeline`}>Timeline</Link>
-        </div>
-        ))}
-      <Link to='/new-story'>+ New Story</Link>
+      <Link to="/new-story">+ New Story</Link>
+      {stories.length === 0 ? (
+        <Link to="/new-story">+ New Story</Link>
+      ) : (
+        stories.map((story) => (
+          <div className="story-globe-container" key={story.id}>
+            <Link to={`story/${story.id}`}>{story.title}</Link>
+            <Link to={`${story.id}/scenes`}>Scenes</Link>
+            <Link to={`${story.id}/ideas`}>Ideas</Link>
+            <Link to={`${story.id}/characters`}>Characters</Link>
+            <Link to={`${story.id}/timeline`}>Timeline</Link>
+          </div>
+        ))
+      )}
+      <Link to="/new-story">+ New Story</Link>
     </section>
   );
 };

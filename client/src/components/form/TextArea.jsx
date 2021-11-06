@@ -7,7 +7,7 @@ const TextArea = ({ label, fieldKey, update }) => {
       <textarea 
         id={label}
         name={fieldKey}
-        onChange={(e) => update(e.target.value)}
+        onChange={(e) => update({[`${fieldKey}`]: e.target.value})}
       />
     </div>
   );

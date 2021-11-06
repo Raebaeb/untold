@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getStory } from "../../services";
+import { useParams, Link } from "react-router-dom";
+import { DeleteBtn } from "../../components";
+import { deleteStory, getStory } from "../../services";
 
 const ViewStory = () => {
   const [story, setStory] = useState({})
@@ -16,6 +17,11 @@ const ViewStory = () => {
       <h4>{story.genre}</h4>
       <p>{story.description}</p>
       {/* Add Links to characters, scenes, ideas, timeline */}
+      <Link to={`/edit-story/${story.id}`}>
+        <button>Edit</button>
+      </Link>
+      <DeleteBtn deleteFunc={deleteStory} name={story.title} storyid={story.id}/>
+      <p>Careful! Deleting this story will delete all associated characters, scenes, and notes.</p>
     </section>
   );
 };

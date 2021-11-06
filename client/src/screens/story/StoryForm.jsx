@@ -16,11 +16,11 @@ const StoryForm = () => {
   useEffect(() => {
     if (params.id) {
       getStory(params.id).then((story) => {
-        setStory(
-          {title: story.title,
+        setStory({
+          title: story.title,
           genre: story.genre,
-          description: story.description }
-        );
+          description: story.description,
+        });
       });
     }
   }, [params.id]);
@@ -28,7 +28,7 @@ const StoryForm = () => {
   const updateStory = (obj) => {
     setStory({ ...story, ...obj });
     return;
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +48,7 @@ const StoryForm = () => {
         name={"Story"}
         fieldsList={storyFields}
         update={updateStory}
+        state={story}
       />
     </section>
   );
