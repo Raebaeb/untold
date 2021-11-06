@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const NewBtn = (props) => {
 
   return (
-    <Link to={`/${props.storyid}/${props.type}/new`}>
+    <Link to={`/${props.storyid}/${props.type}s/new`}>
       <button id="new-btn">
-        + New {props.name}
+        + New {props.type}
       </button>
     </Link>
   );

@@ -25,37 +25,37 @@ function App() {
         <Route path='/home'>
           <Screen.Home user={user}/>
         </Route>
-        <Route path='/story/new'>
+        <Route path='/new/story'>
           <Screen.StoryForm />
         </Route>
         <Route path='/story/edit/:id'>
           <Screen.StoryForm />
         </Route>
-        <Route path='/story/:id'>
+        <Route path='/story/:id' exact>
           <Screen.ViewStory />
         </Route>
-        <Route path='/:id/characters' exact>
+        <Route path='/:id/characters'>
           <Screen.CharacterMain />
         </Route>
-        <Route path='/:id/characters/new'>
+        <Route path='/:id/new/characters'>
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/characters/:character'>
+        <Route path='/:id/characters/:character' exact>
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/ideas' exact>
+        <Route path='/:id/ideas'>
           <Screen.IdeaMain />
         </Route>
-        <Route path='/:id/ideas/new'>
+        <Route path='/:id/new/ideas' exact>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/ideas/:story'>
+        <Route path='/:id/ideas/:idea' exact>
           <Screen.IdeaForm />
         </Route>
         <Route path='/:id/scenes' exact>
           <Screen.SceneMain />
         </Route>
-        <Route path='/:id/scenes/new'>
+        <Route path='/:id/new/scenes' exact>
           <Screen.SceneForm />
         </Route>
         <Route path='/:id/scenes/:scene'>

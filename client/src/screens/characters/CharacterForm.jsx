@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Form } from "../../components";
-import { createCharacter, editCharacter, getCharacter } from "../../services";
+import { createCharacter, editCharacter, getAllCharacters, getCharacter } from "../../services";
 import { charFields } from "../../utils/constants";
 
 const CharacterForm = () => {
@@ -32,6 +32,11 @@ const CharacterForm = () => {
     }
   }, [params]);
 
+  const updateCharacter = (obj) => {
+    setCharacter({ ...character, ...obj });
+    return;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (params.id) {
@@ -44,13 +49,14 @@ const CharacterForm = () => {
 
   return (
     <section>
-      {params.character ? <h2>Edit Character</h2> : <h2>New Character</h2>}
+      {params.character ? <h2>{character.name}</h2> : <h2>New Character</h2>}
       <Form
         obj={params.character ? character : null}
         handleSubmit={handleSubmit}
         name="Character"
         fieldsList={charFields}
-        update={setCharacter}
+        update={updateCharacter}
+        state={character}
       />
     </section>
   );

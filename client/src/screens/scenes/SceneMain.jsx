@@ -16,7 +16,7 @@ const SceneMain = () => {
       <h2>Scenes</h2>
       {scenes?.map((scene) => (
         <div className="scene-container">
-          <Link to={`/${params.id}/scenes/${scene.id}`}>{scene.title}</Link>
+          <Link key={scene.id} to={`/${params.id}/scenes/${scene.id}`}>{scene.title}</Link>
         </div>
       ))}
       <NewBtn storyid={params.id} name='Scene' type='scenes'/>
