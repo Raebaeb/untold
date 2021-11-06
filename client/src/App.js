@@ -37,37 +37,28 @@ function App() {
         <Route path='/:id/characters'>
           <Screen.CharacterMain />
         </Route>
-        <Route path='/:id/characters/:character'>
-          <Screen.ViewCharacter />
-        </Route>
         <Route path='/:id/characters/new'>
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/characters/edit/:character'>
+        <Route path='/:id/characters/:character'>
           <Screen.CharacterForm />
         </Route>
         <Route path='/:id/ideas'>
           <Screen.IdeaMain />
         </Route>
-        <Route path='/:id/ideas/:idea'>
-          <Screen.ViewIdea />
-        </Route>
         <Route path='/:id/ideas/new'>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/ideas/edit/:story'>
+        <Route path='/:id/ideas/:story'>
           <Screen.IdeaForm />
         </Route>
         <Route path='/:id/scenes'>
           <Screen.SceneMain />
         </Route>
-        <Route path='/:id/scenes/:scene'>
-          <Screen.ViewScene />
-        </Route>
         <Route path='/:id/scenes/new'>
           <Screen.SceneForm />
         </Route>
-        <Route path='/:id/scenes/edit/:scene'>
+        <Route path='/:id/scenes/:scene'>
           <Screen.SceneForm />
         </Route>
         <Route path='/:id/timeline'>
