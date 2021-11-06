@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { DeleteBtn, Form } from "../../components";
-import { getIdea, editIdea, createIdea, deleteIdea } from '../../services'
+import { getIdea, editIdea, createIdea, deleteIdea } from "../../services";
 import { ideaFields } from "../../utils/constants";
 
 const IdeaForm = () => {
@@ -33,7 +33,19 @@ const IdeaForm = () => {
 
   return (
     <section>
-      {params.idea ? <><h2>Edit Idea</h2><DeleteBtn /></> : <h2>New Idea</h2>}
+      {params.idea ? (
+        <>
+          <h2>Edit Idea</h2>
+          <DeleteBtn
+            deleteFunc={deleteIdea}
+            name="Idea"
+            storyid={params.id}
+            elemid={params.idea}
+          />
+        </>
+      ) : (
+        <h2>New Idea</h2>
+      )}
       <Form
         handleSubmit={handleSubmit}
         name="Idea"

@@ -44,8 +44,9 @@ const CharacterForm = () => {
 
   return (
     <section>
-      {params.idea ? <h2>Edit Character</h2> : <h2>New Character</h2>}
+      {params.character ? <h2>Edit Character</h2> : <h2>New Character</h2>}
       <Form
+        obj={params.character ? character : null}
         handleSubmit={handleSubmit}
         name="Character"
         fieldsList={charFields}
