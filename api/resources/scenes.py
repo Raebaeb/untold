@@ -42,8 +42,10 @@ def get_one_scene(storyid, sceneid):
             link_dict = model_to_dict(link)
             for key, val in link_dict['character_id'].items():
                 if key == 'id':
-                    characters['id'] = val
-        return jsonify({ 'sceneInfo': scene_dict, 'linked_chars': characters }), 200
+                    id = val
+                if key == 'name':
+                    characters[val] = id
+        return jsonify({ 'sceneInfo': scene_dict, 'linkedChars': characters }), 200
     except DoesNotExist:
         return jsonify(error='Scene does not exist.'), 404
 

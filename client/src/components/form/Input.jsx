@@ -1,4 +1,4 @@
-const Input = ({ label, fieldKey, update }) => {
+const Input = ({ label, fieldKey, update, value }) => {
   return (
     <div className="input-container">
       <label htmlFor={label}>{label}</label>
@@ -6,6 +6,7 @@ const Input = ({ label, fieldKey, update }) => {
         id={label}
         name={fieldKey}
         type="text"
+        value={value}
         onChange={(e) => update({[`${fieldKey}`]: e.target.value})}
       />
     </div>
@@ -13,3 +14,7 @@ const Input = ({ label, fieldKey, update }) => {
 };
 
 export default Input;
+
+
+
+	

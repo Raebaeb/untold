@@ -10,7 +10,8 @@ import { sceneFields } from "../../utils/constants";
 import { Form } from "../../components";
 
 const SceneForm = () => {
-  const [characters, setCharacters] = useState([]);
+  const [linkedChars, setLinkedChars] = useState({});
+  const [allCharacters, setAllCharacters] = useState([]);
   const [scene, setScene] = useState(
     { sceneInfo: {
       title: "",
@@ -19,12 +20,8 @@ const SceneForm = () => {
       summary: "",
       notes: "",
     },
-    addToScene: {
-
-    },
-    removeFromScene: {
-
-    }
+    addToScene: [],
+    removeFromScene: []
     });
 
 
@@ -36,21 +33,22 @@ const SceneForm = () => {
 
   useEffect(() => {
     if (sceneId) {
-      getScene(storyId, sceneId).then((scene) => {
+      getScene(storyId, sceneId).then((fetchedScene) => {
+        const { sceneInfo, linkedChars } = fetchedScene;
         setScene({
           ...scene,
           sceneInfo: {
-            title: scene.title,
-            location: scene.location,
-            participants: scene.participants,
-            summary: scene.summary,
-            notes: scene.notes,
-          }          
-        },
-        );
+            title: sceneInfo.title,
+            location: sceneInfo.location,
+            participants: sceneInfo.participants,
+            summary: sceneInfo.summary,
+            notes: sceneInfo.notes,
+          },
+        });
+        setLinkedChars(linkedChars)
       });
     }
-    getAllCharacters(storyId).then((fetchedChars) => setCharacters(fetchedChars))
+    getAllCharacters(storyId).then((fetchedChars) => setAllCharacters(fetchedChars))
   }, [sceneId]);
 
   const updateScene = (obj) => {
@@ -65,7 +63,7 @@ const SceneForm = () => {
     } else {
       await createScene(storyId, scene);
     }
-    history.push(`${storyId}/scenes/${sceneId}`);
+    history.push(`${storyId}/scenes`);
   };
 
   return (
@@ -76,6 +74,7 @@ const SceneForm = () => {
         name={"Scene"}
         fieldsList={sceneFields}
         update={updateScene}
+        state={scene}
       />
     </section>
   );

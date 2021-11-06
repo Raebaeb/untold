@@ -6,14 +6,14 @@ const Form = (props) => {
   const { fieldsList, update, handleSubmit, name, state } = props;
 
   const checkState = (stateObj, field) => {
-    if (state) {
+    if (stateObj) {
       for (const [key, value] of Object.entries(stateObj)) {
         if (field.key === key) {
           field["value"] = value;
         }
-        return;
       }
     }
+    return;
   };
   
 
