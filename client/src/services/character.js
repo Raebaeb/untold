@@ -7,9 +7,10 @@ const apiURL = process.env.NODE_ENV === "development"
 export const getAllCharacters = async (storyid) => {
   try {
     const response = await axios.get(`${apiURL}/api/${storyid}/characters`);
+    console.log('ALL CHAR QUER',response)
     return response.data;
   } catch (e) {
-    console.error(e.message);
+    console.error('ALL CHAR QYER', e);
   }
 };
 

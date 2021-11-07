@@ -34,13 +34,13 @@ function App() {
         <Route path='/story/:id' exact>
           <Screen.ViewStory />
         </Route>
-        <Route path='/:id/characters'>
+        <Route path='/:id/characters' exact>
           <Screen.CharacterMain />
         </Route>
         <Route path='/:id/new/characters'>
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/characters/:character' exact>
+        <Route path='/:id/characters/:character' >
           <Screen.CharacterForm />
         </Route>
         <Route path='/:id/ideas'>
@@ -52,13 +52,13 @@ function App() {
         <Route path='/:id/ideas/:idea' exact>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/scenes'>
+        <Route path='/:id/scenes' exact>
           <Screen.SceneMain />
         </Route>
         <Route path='/:id/new/scenes'>
           <Screen.SceneForm />
         </Route>
-        <Route path='/:id/scenes/:scene' exact>
+        <Route path='/:id/scenes/:scene'>
           <Screen.SceneForm />
         </Route>
         <Route path='/:id/timeline'>

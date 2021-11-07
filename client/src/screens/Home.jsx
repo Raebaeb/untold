@@ -15,12 +15,12 @@ const Home = (props) => {
   }, []);
   return (
     <section>
-      <Link to="/story/new">+ New Story</Link>
+      <Link to="/new-story">+ New Story</Link>
       {stories.length === 0 ? (
-        <Link to="/story/new">+ New Story</Link>
+        <Link to="/new-story">+ New Story</Link>
       ) : (
         stories.map((story) => (
-          <div className="story-globe-container" key={story.id}>
+          <div className="story-globe-container" key={story}>
             <Link to={`story/${story.id}`}>{story.title}</Link>
             <Link to={`${story.id}/scenes`}>Scenes</Link>
             <Link to={`${story.id}/ideas`}>Ideas</Link>
@@ -29,7 +29,7 @@ const Home = (props) => {
           </div>
         ))
       )}
-      <Link to="/story/new">+ New Story</Link>
+      <Link to="/new-story">+ New Story</Link>
     </section>
   );
 };

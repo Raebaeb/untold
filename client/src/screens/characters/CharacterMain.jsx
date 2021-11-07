@@ -8,12 +8,15 @@ const CharacterMain = () => {
   const params = useParams();
 
   useEffect(() => {
-    getAllCharacters(params.id).then((fetchedChars) => setAllCharacters(fetchedChars))
+    getAllCharacters(params.id)
+      .then((fetchedChars) => setAllCharacters(fetchedChars))
+      .catch(err => console.log('CHAR ERR', err))
   },[params.id])
   
   return (
     <section>
       <h2>Characters</h2>
+      {console.log('ALL CHAR',allCharacters)}
       <MainLinks storyid={params.id} type="characters" objectArray={allCharacters}/>
       <NewBtn storyid={params.id} type='Character'/>
     </section>

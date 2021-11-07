@@ -31,11 +31,11 @@ const SceneForm = () => {
       getScene(params.id, params.scene).then((fetchedScene) => {
         console.log(fetchedScene)
         setScene({
-          title: sceneInfo.title,
-          location: sceneInfo.location,
-          participants: sceneInfo.participants,
-          summary: sceneInfo.summary,
-          notes: sceneInfo.notes,
+          title: fetchedScene.title,
+          location: fetchedScene.location,
+          participants: fetchedScene.participants,
+          summary: fetchedScene.summary,
+          notes: fetchedScene.notes,
         });
         setLinkedChars(linkedChars);
       });
