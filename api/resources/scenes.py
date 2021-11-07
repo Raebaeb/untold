@@ -109,7 +109,7 @@ def delete_scene(storyid, sceneid):
     try:
         (Scene
             .delete()
-            .where((Scene.id == sceneid) & (Scene.story_id == storyid))
+            .where(Scene.id == sceneid)
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:
