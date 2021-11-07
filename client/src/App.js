@@ -43,13 +43,13 @@ function App() {
         <Route path='/:id/characters/:character' >
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/ideas'>
+        <Route path='/:id/ideas' exact>
           <Screen.IdeaMain />
         </Route>
         <Route path='/:id/new/ideas' >
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/ideas/:idea' exact>
+        <Route path='/:id/ideas/:idea'>
           <Screen.IdeaForm />
         </Route>
         <Route path='/:id/scenes' exact>

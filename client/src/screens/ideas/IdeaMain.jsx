@@ -8,14 +8,16 @@ const IdeaMain = () => {
   const params = useParams();
 
   useEffect(() => {
-    getAllIdeas(params.id).then((fetchedIdeas) => setIdeas(fetchedIdeas)).catch(err => console.log('CHAR ERR', err))
-  }, [params.id])
+    getAllIdeas(params.id)
+      .then((fetchedIdeas) => setIdeas(fetchedIdeas))
+      .catch((e) => console.log("IDEA ERROR", e));
+  }, [params.id]);
 
   return (
     <section>
       <h2>Ideas</h2>
-      <MainLinks storyid={params.id} type="ideas" objectArray={ideas}/>
-      <NewBtn storyid={params.id} type='Idea'/>
+      <MainLinks storyid={params.id} type="ideas" objectArray={ideas} />
+      <NewBtn storyid={params.id} type="Idea" />
     </section>
   );
 };

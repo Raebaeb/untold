@@ -21,6 +21,11 @@ const IdeaForm = () => {
     }
   }, [params]);
 
+  const updateIdea = (obj) => {
+    setIdea({ ...idea, ...obj });
+    return;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (params.idea) {
@@ -50,7 +55,7 @@ const IdeaForm = () => {
         handleSubmit={handleSubmit}
         name="Idea"
         fieldsList={ideaFields}
-        update={setIdea}
+        update={updateIdea}
         state={idea}
       />
     </section>

@@ -10,7 +10,7 @@ const CharacterMain = () => {
   useEffect(() => {
     getAllCharacters(params.id)
       .then((fetchedChars) => setAllCharacters(fetchedChars))
-      .catch(err => console.log('CHAR ERR', err))
+      .catch(e => console.log('CHAR ERROR', e))
   },[params.id])
   
   return (
