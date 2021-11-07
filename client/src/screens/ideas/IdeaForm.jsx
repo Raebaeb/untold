@@ -23,7 +23,7 @@ const IdeaForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (params.id) {
+    if (params.idea) {
       await editIdea(params.id, params.idea, idea);
     } else {
       await createIdea(params.id, idea);
@@ -51,6 +51,7 @@ const IdeaForm = () => {
         name="Idea"
         fieldsList={ideaFields}
         update={setIdea}
+        state={idea}
       />
     </section>
   );

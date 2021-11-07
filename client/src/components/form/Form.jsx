@@ -15,7 +15,6 @@ const Form = (props) => {
     }
     return;
   };
-  
 
   const createInputs = (fields) => {
     const components = fields.map((field, i) => {

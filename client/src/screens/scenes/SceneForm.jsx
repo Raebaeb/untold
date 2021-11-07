@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import {
   createScene,
+  deleteScene,
   editScene,
   getAllCharacters,
   getScene,
 } from "../../services";
 import { sceneFields } from "../../utils/constants";
-import { Form } from "../../components";
+import { DeleteBtn, Form } from "../../components";
 
 const SceneForm = () => {
   const [linkedChars, setLinkedChars] = useState([]);
@@ -28,7 +29,7 @@ const SceneForm = () => {
   useEffect(() => {
     if (params.scene) {
       getScene(params.id, params.scene).then((fetchedScene) => {
-        const { sceneInfo, linkedChars } = fetchedScene;
+        console.log(fetchedScene)
         setScene({
           title: sceneInfo.title,
           location: sceneInfo.location,
@@ -52,7 +53,7 @@ const SceneForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newScene = {
-      sceneinfo: scene,
+      sceneInfo: scene,
       addToScene: add,
       removeFromScene: remove,
     };
@@ -66,7 +67,7 @@ const SceneForm = () => {
 
   return (
     <section>
-      {params.id ? <h2>Edit Scene</h2> : <h2>New Scene</h2>}
+      {params.scene ? <><h2>Edit Scene</h2><DeleteBtn deleteFunc={deleteScene} name="Scene" storyid={params.id} elemid={params.scene}/></> : <h2>New Scene</h2>}
       <Form
         handleSubmit={handleSubmit}
         name={"Scene"}

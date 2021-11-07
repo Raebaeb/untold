@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { NewBtn } from "../../components";
+import { MainLinks, NewBtn } from "../../components";
 import { getAllScenes } from "../../services";
 
 const SceneMain = () => {
@@ -14,12 +14,8 @@ const SceneMain = () => {
   return (
     <section>
       <h2>Scenes</h2>
-      {scenes?.map((scene) => (
-        <div className="scene-container">
-          <Link key={scene.id} to={`/${params.id}/scenes/${scene.id}`}>{scene.title}</Link>
-        </div>
-      ))}
-      <NewBtn storyid={params.id} name='Scene' type='scenes'/>
+      <MainLinks storyid={params.id} type='scenes' objectArray={scenes} />
+      <NewBtn storyid={params.id} type='Scene'/>
     </section>
   );
 };

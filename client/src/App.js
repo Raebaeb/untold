@@ -46,19 +46,19 @@ function App() {
         <Route path='/:id/ideas'>
           <Screen.IdeaMain />
         </Route>
-        <Route path='/:id/new/ideas' exact>
+        <Route path='/:id/new/ideas' >
           <Screen.IdeaForm />
         </Route>
         <Route path='/:id/ideas/:idea' exact>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/scenes' exact>
+        <Route path='/:id/scenes'>
           <Screen.SceneMain />
         </Route>
-        <Route path='/:id/new/scenes' exact>
+        <Route path='/:id/new/scenes'>
           <Screen.SceneForm />
         </Route>
-        <Route path='/:id/scenes/:scene'>
+        <Route path='/:id/scenes/:scene' exact>
           <Screen.SceneForm />
         </Route>
         <Route path='/:id/timeline'>

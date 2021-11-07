@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiURL = process.env.NODE_ENV === "development"
-  ? "http://localhost:8000/"
+  ? "http://localhost:8000"
   : process.env.API_URL;
 
 export const getAllIdeas = async (storyid) => {
@@ -22,18 +22,18 @@ export const getIdea = async (storyid, ideaid) => {
   }
 };
 
-export const createIdea = async (storyid) => {
+export const createIdea = async (storyid, newIdea) => {
   try {
-    const response = await axios.post(`${apiURL}/api/${storyid}/ideas/new`);
+    const response = await axios.post(`${apiURL}/api/${storyid}/ideas/new`, newIdea);
     return response.data;
   } catch (e) {
     console.error(e.message);
   }
 };
 
-export const editIdea = async (storyid, ideaid) => {
+export const editIdea = async (storyid, ideaid, ideaInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/ideas/edit/${ideaid}`);
+    const response = await axios.put(`${apiURL}/api/${storyid}/ideas/edit/${ideaid}`, ideaInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);

@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getAllCharacters } from "../../services";
-import { NewBtn } from "../../components";
+import { MainLinks, NewBtn } from "../../components";
 
 const CharacterMain = () => {
-  const [characters, setCharacters] = useState([]);
+  const [allCharacters, setAllCharacters] = useState([]);
   const params = useParams();
 
   useEffect(() => {
-    getAllCharacters(params.id).then((fetchedChars) => setCharacters(fetchedChars))
+    getAllCharacters(params.id).then((fetchedChars) => setAllCharacters(fetchedChars))
   },[params.id])
   
   return (
     <section>
       <h2>Characters</h2>
-      {characters?.map((char) => {
-        <div className="character-container">
-          <Link to={`/${params.id}/characters/${char.id}`}>{char.name}</Link>
-        </div>
-      })}
-      <NewBtn storyid={params.id} type='characters'/>
+      <MainLinks storyid={params.id} type="characters" objectArray={allCharacters}/>
+      <NewBtn storyid={params.id} type='Character'/>
     </section>
   );
 };

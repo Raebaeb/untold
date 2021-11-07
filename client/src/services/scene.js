@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiURL = process.env.NODE_ENV === "development"
-  ? `http://localhost:8000/`
+  ? `http://localhost:8000`
   : process.env.API_URL;
 
 export const getAllScenes = async (storyid) => {
@@ -22,18 +22,18 @@ export const getScene = async (storyid, sceneid) => {
   }
 }
 
-export const createScene = async (storyid, newStory) => {
+export const createScene = async (storyid, newScene) => {
   try {
-    const response = await axios.post(`${apiURL}/api/${storyid}/scenes/new`, newStory);
+    const response = await axios.post(`${apiURL}/api/${storyid}/scenes/new`, newScene);
     return response.data;
   } catch (e) {
     console.error(e.message)
   }
 }
 
-export const editScene = async (storyid, sceneid, storyInfo) => {
+export const editScene = async (storyid, sceneid, sceneInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/edit/${sceneid}`, storyInfo);
+    const response = await axios.put(`${apiURL}/api/${storyid}/edit/${sceneid}`, sceneInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);

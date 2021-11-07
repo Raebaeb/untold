@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiURL = process.env.NODE_ENV === "development"
-  ? "http://localhost:8000/"
+  ? "http://localhost:8000"
   : process.env.REACT_APP_API_URL;
 
 export const getAllStories = async () => {

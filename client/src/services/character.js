@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiURL = process.env.NODE_ENV === "development"
-  ? `http://localhost:8000/`
+  ? `http://localhost:8000`
   : process.env.API_URL;
 
 export const getAllCharacters = async (storyid) => {
@@ -22,18 +22,18 @@ export const getCharacter = async (storyid, charid) => {
   }
 };
 
-export const createCharacter = async (storyid) => {
+export const createCharacter = async (storyid, newChar) => {
   try {
-    const response = await axios.post(`${apiURL}/api/${storyid}/characters/new`);
+    const response = await axios.post(`${apiURL}/api/${storyid}/characters/new`, newChar);
     return response.data;
   } catch (e) {
     console.error(e.message);
   }
 };
 
-export const editCharacter = async (storyid, charid) => {
+export const editCharacter = async (storyid, charid, charInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/characters/edit/${charid}`);
+    const response = await axios.put(`${apiURL}/api/${storyid}/characters/edit/${charid}`, charInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);
