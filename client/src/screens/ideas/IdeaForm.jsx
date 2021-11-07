@@ -35,7 +35,7 @@ const IdeaForm = () => {
     <section>
       {params.idea ? (
         <>
-          <h2>Edit Idea</h2>
+          <h2>{idea.title}</h2>
           <DeleteBtn
             deleteFunc={deleteIdea}
             name="Idea"

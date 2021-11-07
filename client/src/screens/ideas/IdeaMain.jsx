@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getAllIdeas } from "../../services";
+import { MainLinks, NewBtn } from "../../components";
 
 const IdeaMain = () => {
   const [ideas, setIdeas] = useState([]);
   const params = useParams();
 
   useEffect(() => {
-    // getAllIdeas
+    getAllIdeas(params.id).then((fetchedIdeas) => setIdeas(fetchedIdeas)).catch(err => console.log('CHAR ERR', err))
   }, [params.id])
 
   return (
     <section>
       <h2>Ideas</h2>
-      {ideas.map((idea) => {
-        <div className="idea-container">
-          <Link to={`/${params.id}/ideas/${idea.id}`}>{idea.title}</Link>
-        </div>
-      })}
+      <MainLinks storyid={params.id} type="ideas" objectArray={ideas}/>
+      <NewBtn storyid={params.id} type='Idea'/>
     </section>
   );
 };
