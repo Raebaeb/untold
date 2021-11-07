@@ -23,7 +23,7 @@ const Nav = (props) => {
   };
   return (
     <nav>
-      <Link to="/home">Untold.</Link>
+      <Link to="/home" id="logo">Untold.</Link>
       {props.user ? (
         <>
           <h3>Welcome back, {props.user.first_name}!</h3>

@@ -18,9 +18,9 @@ const Login = (props) => {
     history.push('/home');
   }
   return (
-    <section>
+    <section id='login-page'>
       <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='user-form'>
         <label htmlFor="email">Email:</label>
         <input
           id="email"
@@ -37,7 +37,7 @@ const Login = (props) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Log In</button>
+        <button type="submit" className='login-btn user-btn'>Log In</button>
       </form>
     </section>
   );

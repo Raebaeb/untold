@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router';
 import { useState } from 'react';
 import * as Screen from './screens'
 import * as Component from './components'
-import './App.css';
+import './css/index.css'
 
 
 function App() {

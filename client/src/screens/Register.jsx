@@ -28,9 +28,9 @@ const Register = (props) => {
     history.push('/home');
   }
   return (
-    <section>
+    <section id='register-page'>
       <h3>Register</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='user-form'>
         <label htmlFor="email">Email:</label>
         <input
           id="email"
@@ -71,7 +71,7 @@ const Register = (props) => {
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-        <button type="submit">REGISTER</button>
+        <button type="submit" className='register-btn user-btn'>REGISTER</button>
       </form>
     </section>
   );

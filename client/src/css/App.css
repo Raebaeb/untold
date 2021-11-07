@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&family=Nunito&display=swap');
+
+:root {
+  --font-color: #353539;
+  --small-font: 'Nunito', san-serif;
+  --blue: #224D87;
+  --gray-blue: #5E6D82;
+  --yellow: #D7A31A;
+  --main-color: #FCFCFC;
+  --bg-color: #F1EFE6;
+  --header-font: 'Alegreya SC', serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  color: var(--font-color);
+  background-color: var(--bg-color);
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 35px 1fr 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--font-color);
+}
+
+main {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  background-color: var(--main-color);
+  flex-direction: column;
+  text-align: center;
+  width: 95vw;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  font-family: var(--small-font);
+}

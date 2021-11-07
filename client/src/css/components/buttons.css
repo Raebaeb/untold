@@ -1,0 +1,21 @@
+button {
+  border-radius: 5px;
+  border: none;
+}
+
+
+.login-btn {
+  background-color: var(--blue);
+}
+.register-btn {
+  background-color: var(--yellow);
+}
+.user-btn {
+  font-family: var(--small-font);
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  width: 85px;
+  height: 40px;
+  margin: 0 5px;
+}
