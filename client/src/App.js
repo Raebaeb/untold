@@ -7,10 +7,12 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [stories, setStories] = useState([]);
+  const [story, setStory] = useState([])
 
   return (
     <div className="App">
-      <Component.Nav user={user} setUser={setUser}/>
+      <Component.Nav user={user} setUser={setUser} stories={stories} story={story}/>
       <Switch>
         <main>
         <Route path='/' exact>
@@ -23,7 +25,7 @@ function App() {
           <Screen.Login setUser={setUser} />
         </Route>
         <Route path='/home'>
-          <Screen.Home user={user}/>
+          <Screen.Home user={user} stories={stories} setStories={setStories} setStory={setStory}/>
         </Route>
         <Route path='/new/story'>
           <Screen.StoryForm />
@@ -32,36 +34,36 @@ function App() {
           <Screen.StoryForm />
         </Route>
         <Route path='/story/:id' exact>
-          <Screen.ViewStory />
+          <Screen.ViewStory story={story} setStory={setStory}/>
         </Route>
-        <Route path='/:id/characters' exact>
+        <Route path='/:id/characters' exact setStory={setStory}>
           <Screen.CharacterMain />
         </Route>
-        <Route path='/:id/new/characters'>
+        <Route path='/:id/new/characters' setStory={setStory}>
           <Screen.CharacterForm />
         </Route>
         <Route path='/:id/characters/:character' >
           <Screen.CharacterForm />
         </Route>
-        <Route path='/:id/ideas' exact>
+        <Route path='/:id/ideas' exact setStory={setStory}> 
           <Screen.IdeaMain />
         </Route>
-        <Route path='/:id/new/ideas' >
+        <Route path='/:id/new/ideas' setStory={setStory} >
           <Screen.IdeaForm />
         </Route>
         <Route path='/:id/ideas/:idea'>
           <Screen.IdeaForm />
         </Route>
-        <Route path='/:id/scenes' exact>
+        <Route path='/:id/scenes' exact setStory={setStory}>
           <Screen.SceneMain />
         </Route>
-        <Route path='/:id/new/scenes'>
+        <Route path='/:id/new/scenes' setStory={setStory}>
           <Screen.SceneForm />
         </Route>
         <Route path='/:id/scenes/:scene'>
           <Screen.SceneForm />
         </Route>
-        <Route path='/:id/timeline'>
+        <Route path='/:id/timeline' setStory={setStory}>
           <Screen.Timeline />
         </Route>
         </main>

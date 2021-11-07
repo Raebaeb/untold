@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { DeleteBtn } from "../../components";
 import { deleteStory, getStory } from "../../services";
 
-const ViewStory = () => {
-  const [story, setStory] = useState({})
+const ViewStory = ({ story, setStory }) => {
   const params = useParams();
 
   useEffect(() => {

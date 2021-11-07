@@ -3,21 +3,23 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { getAllStories } from "../services";
 
-const Home = (props) => {
-  const [stories, setStories] = useState([]);
+const Home = ({ user, stories, setStories, setStory }) => {
+  
   const history = useHistory();
 
   useEffect(() => {
-    if (!props.user) {
+    if (!user) {
       history.push("/");
     }
     getAllStories().then((fetchedStories) => setStories(fetchedStories));
+    console.log(stories);
+    setStory([])
   }, []);
   return (
     <section>
-      <Link to="/new-story">+ New Story</Link>
+      <Link to="/new/story">+ New Story</Link>
       {stories.length === 0 ? (
-        <Link to="/new-story">+ New Story</Link>
+        <Link to="/new/story">+ New Story</Link>
       ) : (
         stories.map((story) => (
           <div className="story-globe-container" key={story}>
@@ -29,7 +31,7 @@ const Home = (props) => {
           </div>
         ))
       )}
-      <Link to="/new-story">+ New Story</Link>
+      <Link to="/new/story">+ New Story</Link>
     </section>
   );
 };

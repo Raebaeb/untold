@@ -1,6 +1,6 @@
 import Input from "./Input";
 import TextArea from "./TextArea";
-import Dropdown from "../dropdown/Dropdown";
+import Dropdown from "../dropdown/DropdownContainer";
 
 const Form = (props) => {
   const { fieldsList, update, handleSubmit, name, state } = props;
