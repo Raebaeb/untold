@@ -2,7 +2,7 @@ import Dropdown from "react-dropdown";
 import { useHistory } from "react-router-dom";
 import "react-dropdown/style.css";
 
-const DropdownContainer = ({ linkArray, story, disabled }) => {
+const DropdownContainer = ({ linkArray, story }) => {
   const history = useHistory();
 
 

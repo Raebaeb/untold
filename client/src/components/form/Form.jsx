@@ -1,9 +1,19 @@
 import Input from "./Input";
 import TextArea from "./TextArea";
-import Dropdown from "../dropdown/DropdownContainer";
+import { default as ReactSelect } from "react-select";
+import { components } from "react-select";
 
 const Form = (props) => {
-  const { fieldsList, update, handleSubmit, name, state } = props;
+  const {
+    fieldsList,
+    update,
+    handleSubmit,
+    name,
+    state,
+    characters,
+  } = props;
+
+  console.log(characters)
 
   const checkState = (stateObj, field) => {
     if (stateObj) {
@@ -14,6 +24,13 @@ const Form = (props) => {
       }
     }
     return;
+  };
+
+  const createOptions = (array) => {
+    const characterOptions = array.map((char) => {
+      return { value: char.id, label: char.name };
+    });
+    return characterOptions;
   };
 
   const createInputs = (fields) => {
@@ -41,13 +58,48 @@ const Form = (props) => {
   };
 
   const formInputs = createInputs(fieldsList);
+  const options = createOptions(characters);
 
   return (
     <form onSubmit={handleSubmit}>
       {formInputs.map((comp) => comp)}
+      {name === "Scene" ? (
+        <div id="scene-dropdown">
+        <span>Linked Characters:</span>
+        <ReactSelect
+          className="Dropdown-root"
+          options={options}
+          isMulti
+          closeMenuOnSelect={false}
+          hideSelectedOptions={false}
+          components={{
+            Option,
+          }}
+          // onChange={handleChange}
+          allowSelectAll={true}
+          value={state.optionSelected}
+          placeholder="Select Participating Characters"
+        />
+        </div>
+      ) : null}
       <button type="submit">Save {name}</button>
     </form>
   );
 };
 
 export default Form;
+
+const Option = (props) => {
+  return (
+    <div>
+      <components.Option {...props}>
+        <input
+          type="checkbox"
+          checked={props.isSelected}
+          onChange={() => null}
+        />
+        <label>{props.label}</label>
+      </components.Option>
+    </div>
+  );
+};

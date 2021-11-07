@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import {
   createScene,
@@ -11,7 +11,7 @@ import { sceneFields } from "../../utils/constants";
 import { DeleteBtn, Form } from "../../components";
 
 const SceneForm = () => {
-  const [linkedChars, setLinkedChars] = useState([]);
+  const [selectedChars, setSelectedChars] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
   const [add, setAdd] = useState([]);
   const [remove, setRemove] = useState([]);
@@ -37,13 +37,13 @@ const SceneForm = () => {
           summary: sceneInfo.summary,
           notes: sceneInfo.notes,
         });
-        setLinkedChars(linkedChars);
+        
       });
     }
     getAllCharacters(params.id).then((fetchedChars) =>
       setAllCharacters(fetchedChars)
     );
-  }, [params.scene]);
+  }, [params.scene, selectedChars]);
 
   const updateScene = (obj) => {
     setScene({ ...scene, ...obj });
@@ -82,15 +82,12 @@ const SceneForm = () => {
       )}
       <Form
         handleSubmit={handleSubmit}
-        name={"Scene"}
+        name="Scene"
         fieldsList={sceneFields}
         update={updateScene}
         state={scene}
+        characters={allCharacters}
       />
-      <h5>Linked Characters:</h5>
-      {linkedChars.map((char) => (
-        <Link to={`/${params.id}/characters/${char.id}`}>{char.name}</Link>
-      ))}
     </section>
   );
 };
