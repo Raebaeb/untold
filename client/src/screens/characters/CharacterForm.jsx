@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Form } from "../../components";
-import { createCharacter, editCharacter, getCharacter } from "../../services";
+import { DeleteBtn, Form } from "../../components";
+import {
+  createCharacter,
+  deleteCharacter,
+  editCharacter,
+  getCharacter,
+} from "../../services";
 import { charFields } from "../../utils/constants";
 
 const CharacterForm = () => {
@@ -49,7 +54,19 @@ const CharacterForm = () => {
 
   return (
     <section>
-      {params.character ? <h2>{character.name}</h2> : <h2>New Character</h2>}
+      {params.character ? (
+        <>
+          <h2>{character.name}</h2>
+          <DeleteBtn
+            deleteFunc={deleteCharacter}
+            name="Character"
+            storyid={params.id}
+            elemid={params.character}
+          />
+        </>
+      ) : (
+        <h2>New Character</h2>
+      )}
       <Form
         handleSubmit={handleSubmit}
         name="Character"

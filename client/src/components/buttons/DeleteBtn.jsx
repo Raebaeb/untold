@@ -5,11 +5,19 @@ const DeleteBtn = ({ deleteFunc, name, storyid, elemid}) => {
 
   const handleDelete = async () => {
     if (!elemid) {
-      await deleteFunc(storyid)
-      history.push('/home')
+      try {
+        await deleteFunc(storyid)
+        history.push('/home')
+      } catch (e) {
+        console.error('story delete', e.message)
+      }
     } else {
-      await deleteFunc(storyid, elemid)
-      history.push(`/${storyid}/${name}s`)
+      try {
+        await deleteFunc(storyid, elemid)
+        history.push(`/${storyid}/${name}s`)
+      } catch (e) {
+        console.error('other delete', e.message)
+      }
     }
   }
 

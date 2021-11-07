@@ -29,13 +29,13 @@ const SceneForm = () => {
   useEffect(() => {
     if (params.scene) {
       getScene(params.id, params.scene).then((fetchedScene) => {
-        console.log(fetchedScene)
+        const { sceneInfo } = fetchedScene;
         setScene({
-          title: fetchedScene.title,
-          location: fetchedScene.location,
-          participants: fetchedScene.participants,
-          summary: fetchedScene.summary,
-          notes: fetchedScene.notes,
+          title: sceneInfo.title,
+          location: sceneInfo.location,
+          participants: sceneInfo.participants,
+          summary: sceneInfo.summary,
+          notes: sceneInfo.notes,
         });
         setLinkedChars(linkedChars);
       });
@@ -67,7 +67,19 @@ const SceneForm = () => {
 
   return (
     <section>
-      {params.scene ? <><h2>Edit Scene</h2><DeleteBtn deleteFunc={deleteScene} name="Scene" storyid={params.id} elemid={params.scene}/></> : <h2>New Scene</h2>}
+      {params.scene ? (
+        <>
+          <h2>{scene.title}</h2>
+          <DeleteBtn
+            deleteFunc={deleteScene}
+            name="Scene"
+            storyid={params.id}
+            elemid={params.scene}
+          />
+        </>
+      ) : (
+        <h2>New Scene</h2>
+      )}
       <Form
         handleSubmit={handleSubmit}
         name={"Scene"}

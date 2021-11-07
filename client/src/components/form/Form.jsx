@@ -45,7 +45,7 @@ const Form = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       {formInputs.map((comp) => comp)}
-      <button>Save {name}</button>
+      <button type="submit">Save {name}</button>
     </form>
   );
 };

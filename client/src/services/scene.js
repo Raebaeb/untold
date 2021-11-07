@@ -33,7 +33,7 @@ export const createScene = async (storyid, newScene) => {
 
 export const editScene = async (storyid, sceneid, sceneInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/edit/${sceneid}`, sceneInfo);
+    const response = await axios.put(`${apiURL}/api/${storyid}/scenes/edit/${sceneid}`, sceneInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);
@@ -42,7 +42,7 @@ export const editScene = async (storyid, sceneid, sceneInfo) => {
 
 export const deleteScene = async (storyid, sceneid) => {
   try {
-    await axios.delete(`${apiURL}/api/${storyid}/delete/${sceneid}`)
+    await axios.delete(`${apiURL}/api/${storyid}/scenes/delete/${sceneid}`)
   } catch (e) {
     console.error(e.message);
   }
