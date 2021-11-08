@@ -52,9 +52,8 @@ const SceneForm = () => {
     return;
   };
 
-  const handleChange = (selectedOption) => {
-    // state.setState({ selectedOption });
-    // console.log('option selected', selectedOption)
+  const handleChange = (e) => {
+    console.log(e)
   }
 
   const handleSubmit = async (e) => {

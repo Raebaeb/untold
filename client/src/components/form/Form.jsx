@@ -81,7 +81,7 @@ const Form = (props) => {
           components={{
             Option,
           }}
-          onChange={() => handleChange(state.selectedOption)}
+          onChange={(e) => handleChange(e)}
           allowSelectAll={true}
           value={state.selectedOption}
           placeholder="Select Participating Characters"
