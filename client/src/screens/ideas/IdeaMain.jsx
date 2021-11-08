@@ -15,7 +15,7 @@ const IdeaMain = () => {
 
   return (
     <section>
-      <h2>Ideas</h2>
+      <h1>Ideas</h1>
       <MainLinks storyid={params.id} type="ideas" objectArray={ideas} />
       <NewBtn storyid={params.id} type="Idea" />
     </section>

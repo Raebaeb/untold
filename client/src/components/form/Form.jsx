@@ -27,10 +27,14 @@ const Form = (props) => {
   };
 
   const createOptions = (array) => {
+    if (name !== "Scene") { 
+      return
+    } else {
     const characterOptions = array.map((char) => {
       return { value: char.id, label: char.name };
     });
     return characterOptions;
+  }
   };
 
   const createInputs = (fields) => {
@@ -82,7 +86,7 @@ const Form = (props) => {
         />
         </div>
       ) : null}
-      <button type="submit">Save {name}</button>
+      <button type="submit" className='save-btn'>Save {name}</button>
     </form>
   );
 };

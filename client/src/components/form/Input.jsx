@@ -1,4 +1,6 @@
 const Input = ({ label, fieldKey, update, value }) => {
+
+
   return (
     <div className="input-container">
       <label htmlFor={label}>{label}</label>
@@ -7,6 +9,7 @@ const Input = ({ label, fieldKey, update, value }) => {
         name={fieldKey}
         type="text"
         value={value}
+        required={fieldKey === 'title' || fieldKey === 'name' ? true : false}
         onChange={(e) => update({[`${fieldKey}`]: e.target.value})}
       />
     </div>
@@ -17,4 +20,3 @@ export default Input;
 
 
 
-	

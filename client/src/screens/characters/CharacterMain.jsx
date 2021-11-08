@@ -15,7 +15,7 @@ const CharacterMain = () => {
   
   return (
     <section>
-      <h2>Characters</h2>
+      <h1>Characters</h1>
       <MainLinks storyid={params.id} type="characters" objectArray={allCharacters}/>
       <NewBtn storyid={params.id} type='Character'/>
     </section>

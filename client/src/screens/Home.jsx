@@ -22,13 +22,15 @@ const Home = ({ user, stories, setStories, setStory }) => {
         <Link to="/new/story">+ New Story</Link>
       ) : (
         stories.map((story) => (
-          <div className="story-globe-container" key={story}>
-            <Link to={`story/${story.id}`}>{story.title}</Link>
+          <article className="story-globe-container" key={story}>
+            <div className='story-link'><Link to={`story/${story.id}`} >{story.title}</Link></div>
+            <div className='story-links-container'>
             <Link to={`${story.id}/scenes`}>Scenes</Link>
             <Link to={`${story.id}/ideas`}>Ideas</Link>
             <Link to={`${story.id}/characters`}>Characters</Link>
             <Link to={`${story.id}/timeline`}>Timeline</Link>
-          </div>
+            </div>
+          </article>
         ))
       )}
       <Link to="/new/story">+ New Story</Link>

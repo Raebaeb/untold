@@ -12,7 +12,7 @@ const ViewStory = ({ story, setStory }) => {
 
   return (
     <section>
-      <h2>{story.title}</h2>
+      <h1>{story.title}</h1>
       <h4>{story.genre}</h4>
       <p>{story.description}</p>
       {/* Add Links to characters, scenes, ideas, timeline */}
@@ -20,7 +20,7 @@ const ViewStory = ({ story, setStory }) => {
         <button>Edit</button>
       </Link>
       <DeleteBtn deleteFunc={deleteStory} name="Story" storyid={story.id}/>
-      <p>Careful! Deleting this story will delete all associated characters, scenes, and notes.</p>
+      <p id='warning'>Careful! Deleting this story will delete all associated characters, scenes, and notes.</p>
     </section>
   );
 };

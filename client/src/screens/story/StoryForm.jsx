@@ -42,7 +42,7 @@ const StoryForm = () => {
 
   return (
     <section>
-      {params.id ? <h2>Edit Story</h2> : <h2>Spin a new tale...</h2>}
+      {params.id ? <h1>Edit Story</h1> : <h1>Spin a new tale...</h1>}
       <Form
         handleSubmit={handleSubmit}
         name={"Story"}

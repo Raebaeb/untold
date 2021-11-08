@@ -13,7 +13,7 @@ const SceneMain = () => {
 
   return (
     <section>
-      <h2>Scenes</h2>
+      <h1>Scenes</h1>
       <MainLinks storyid={params.id} type='scenes' objectArray={scenes} />
       <NewBtn storyid={params.id} type='Scene'/>
     </section>
