@@ -19,25 +19,27 @@ const Login = (props) => {
   }
   return (
     <section id='login-page'>
-      <h3>Login</h3>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit} className='user-form'>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className='email-label'>Email</label>
         <input
           id="email"
-          type="text"
+          className='email'
+          type="text" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password" className='password-label'>Password</label>
         <input
           id="password"
+          className='password'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className='login-btn user-btn'>Log In</button>
+        <button type="submit" className='login-btn user-btn'>LOG IN</button>
       </form>
     </section>
   );

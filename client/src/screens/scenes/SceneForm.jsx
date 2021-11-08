@@ -1,5 +1,5 @@
-import { useDebugValue, useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import {
   createScene,
   deleteScene,
@@ -43,7 +43,7 @@ const SceneForm = () => {
     getAllCharacters(params.id).then((fetchedChars) =>
       setAllCharacters(fetchedChars)
     );
-  }, [params.scene, selectedChars]);
+  }, [params, selectedChars]);
 
   const updateScene = (obj) => {
     setScene({ ...scene, ...obj });

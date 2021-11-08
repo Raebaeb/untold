@@ -35,6 +35,12 @@ a:visited {
   color: var(--font-color);
 }
 
+h1 {
+  font-family: var(--header-font);
+  font-size: 2em;
+  margin: 0;
+}
+
 main {
   justify-self: center;
   display: flex;

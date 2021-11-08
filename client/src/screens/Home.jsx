@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { getAllStories } from "../services";
@@ -14,7 +14,7 @@ const Home = ({ user, stories, setStories, setStory }) => {
     getAllStories().then((fetchedStories) => setStories(fetchedStories));
     console.log(stories);
     setStory([])
-  }, []);
+  }, [history, setStories, setStory, stories, user]);
   return (
     <section>
       <Link to="/new/story">+ New Story</Link>

@@ -8,7 +8,7 @@ const ViewStory = ({ story, setStory }) => {
 
   useEffect(() => {
     getStory(params.id).then((fetchedStory) => setStory(fetchedStory))
-  }, [params.id])
+  }, [params.id, setStory])
 
   return (
     <section>
