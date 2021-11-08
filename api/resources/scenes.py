@@ -34,7 +34,7 @@ def get_one_scene(storyid, sceneid):
         if (scene.story_id != story):
             raise DoesNotExist
         get_links = (CharToScene.select(CharToScene.character_id)
-                     .where(CharToScene.scene_id == sceneid))
+                    .where(CharToScene.scene_id == sceneid))
         scene_dict = model_to_dict(scene, recurse=False)
         characters = []
         for link in get_links:

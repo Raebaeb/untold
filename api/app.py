@@ -76,7 +76,7 @@ app.register_blueprint(timeline)
 app.register_blueprint(event)
 
 
-CORS(app, origins=origins, expose_headers='Content-Range,Access-Control-Allow-Origin,Access-Control-Allow-Headers', supports_credentials=True)
+CORS(app, origins=origins, supports_credentials=True)
 
 
 if 'DATABASE_URL' in os.environ:
