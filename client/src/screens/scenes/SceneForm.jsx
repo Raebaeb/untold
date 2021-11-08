@@ -64,7 +64,13 @@ const SceneForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newScene = {
-      sceneInfo: scene,
+      sceneInfo: {
+        title,
+        location,
+        participants,
+        summary,
+        notes
+      },
       addToScene: add,
       removeFromScene: remove,
     };
