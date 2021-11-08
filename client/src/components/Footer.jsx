@@ -2,7 +2,7 @@
 const Footer = () => {
   return (
     <footer>
-      Untold © Rachel Perez 2020
+      Untold © Rachel Perez 2021
     </footer>
   );
 };

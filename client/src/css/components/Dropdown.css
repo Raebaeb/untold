@@ -1,8 +1,24 @@
 .Dropdown-control {
   color: var(--font-color);
   font-size: 1em;
+  font-weight: bold;
+  font-family: var(--small-font);
+  height: 30px;
+  border: none;
+  padding-right: 25px;
 }
 .Dropdown-arrow {
   border-color: var(--yellow) transparent transparent;
   border-width: 8px 8px 0;
+}
+
+.is-open .Dropdown-arrow{
+  border-color: transparent transparent var(--yellow);
+  border-width: 0 8px 8px;
+}
+
+.Dropdown-placeholder {
+  width: 80px;
+  line-height: 1em;
+  
 }

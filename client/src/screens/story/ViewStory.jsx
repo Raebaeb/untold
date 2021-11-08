@@ -19,7 +19,7 @@ const ViewStory = ({ story, setStory }) => {
       <Link to={`/story/edit/${story.id}`}>
         <button>Edit</button>
       </Link>
-      <DeleteBtn deleteFunc={deleteStory} name={story.title} storyid={story.id}/>
+      <DeleteBtn deleteFunc={deleteStory} name="Story" storyid={story.id}/>
       <p>Careful! Deleting this story will delete all associated characters, scenes, and notes.</p>
     </section>
   );
