@@ -9,7 +9,7 @@ const Landing = () => {
 
   useEffect(() => {
     const options = {
-      strings: ['Novel Authors.', 'Comic Creators.', 'Dungeon Masters.', 'Creative Writers.'],
+      strings: ['Novelists', 'Comic Creators', 'Dungeon Masters', 'Creative Writers'],
       typeSpeed: 80,
       backSpeed: 50
     };
@@ -22,7 +22,7 @@ const Landing = () => {
   return (
     <section id='landing-page'>
       <div id='landing-hero'>
-      <span style={{ whiteSpace: 'pre' }} ref={hero}/>
+        <span style={{ whiteSpace: 'pre' }} ref={hero} className='type-anim'/>
       </div>
       <article id='landing-info'>
       <p>A writer's digital notebook that helps you build an encyclopedia for your untold stories. Keep track of every detail and organize your thoughts in an environment that helps you tie them all together. Register or log in to an account to start the creative journey.</p>

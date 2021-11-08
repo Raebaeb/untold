@@ -24,6 +24,7 @@ button {
 .user-btn {
   font-family: var(--small-font);
   font-weight: bold;
+  font-size: 1.2em;
   width: 120px;
   height: 40px;
   margin: 0 5px;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=Nunito&display=swap');
 
 :root {
   --font-color: #353539;
@@ -6,6 +6,7 @@
   --blue: #224D87;
   --gray-blue: #5E6D82;
   --yellow: #D7A31A;
+  --light-gray: #F8F8FF;
   --main-color: #FCFCFC;
   --bg-color: #F1EFE6;
   --header-font: 'Alegreya SC', serif;
@@ -25,10 +26,12 @@ body {
   grid-gap: 8px;
   grid-template-columns: 1fr;
   grid-template-rows: 35px 1fr 20px;
+  font-family: var(--small-font);
 }
 
 a {
   text-decoration: none;
+  color: var(--font-color);
 }
 
 a:visited {
