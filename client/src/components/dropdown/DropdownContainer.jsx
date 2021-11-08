@@ -5,9 +5,9 @@ import "react-dropdown/style.css";
 const DropdownContainer = ({ linkArray, story }) => {
   const history = useHistory();
 
-
   const createOptions = (array) => {
-    const options = array.map((link) => {
+    const ops = Array.isArray(array) ? Array.from(array) : array
+    const options = ops.map((link) => {
       return { value: link.id, label: link.title };
     });
     return options;
