@@ -76,9 +76,6 @@ app.register_blueprint(timeline)
 app.register_blueprint(event)
 
 
-CORS(app, origins=origins, supports_credentials=True)
-
-
 if 'DATABASE_URL' in os.environ:
     initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene])
     app.config['SESSION_COOKIE_SECURE'] = True
@@ -86,6 +83,7 @@ if 'DATABASE_URL' in os.environ:
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     origins.append(os.environ.get('CLIENT_URL'))
 
+CORS(app, origins=origins, supports_credentials=True)
 
 if __name__ == '__main__': 
     initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene])
