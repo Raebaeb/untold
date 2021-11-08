@@ -40,7 +40,7 @@ a:visited {
 
 h1 {
   font-family: var(--header-font);
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0;
   position: relative;
 }
@@ -74,4 +74,20 @@ main {
 
 p {
   font-family: var(--small-font);
+}
+
+@media only screen and (min-width: 768px ) {
+  
+  .App {
+    grid-template-columns: 4(repeat, 1fr);
+    grid-template-rows: 50px 1fr 30px;
+  }
+
+  main {
+    max-width: 88vw;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
 }

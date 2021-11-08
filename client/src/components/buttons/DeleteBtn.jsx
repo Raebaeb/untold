@@ -22,7 +22,7 @@ const DeleteBtn = ({ deleteFunc, name, storyid, elemid}) => {
   }
 
   return (
-    <button id="delete-btn" onClick={handleDelete}>
+    <button className="delete-btn" onClick={handleDelete}>
       Delete {name}
     </button>
   );

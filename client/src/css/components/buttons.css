@@ -5,12 +5,41 @@ button {
   font-size: 1em;
 }
 
+.delete-btn {
+  background-color: transparent;
+  color: #E8674A;
+}
+
 .login-btn {
   background-color: var(--blue);
 }
 .logout-btn {
   background-color: var(--gray-blue);
   height: 20px;
+}
+
+.register-btn {
+  background-color: var(--yellow);
+}
+
+.save-btn {
+  width: 100px;
+  height: 40px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 20px 0;
+  background-color: var(--blue);
+}
+
+.user-btn {
+  font-family: var(--small-font);
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 120px;
+  height: 40px;
+  margin: 0 5px;
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
 }
 
 #new-btn {
@@ -25,25 +54,4 @@ background-color: var(--gray-blue);
 font-weight: bold;
 text-align: center;
 letter-spacing: -0.02em;
-}
-
-.register-btn {
-  background-color: var(--yellow);
-}
-
-.save-btn {
-  width: 120px;
-  height: 40px;
-  font-weight: bold;
-  background-color: var(--blue);
-}
-.user-btn {
-  font-family: var(--small-font);
-  font-weight: bold;
-  font-size: 1.2em;
-  width: 120px;
-  height: 40px;
-  margin: 0 5px;
-  grid-column: 1 / 3;
-  grid-row: 3 / 4;
 }

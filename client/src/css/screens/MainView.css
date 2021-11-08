@@ -23,8 +23,8 @@
   border: 2px solid var(--yellow)
 }
 
-.main-view-page, .form-page {
+.main-view-page {
   height: 100%;
   box-sizing: border-box;
-  padding-top: 20px;
+  padding-top: 15px;
 } 

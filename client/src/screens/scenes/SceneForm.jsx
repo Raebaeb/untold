@@ -21,6 +21,7 @@ const SceneForm = () => {
     participants: "",
     summary: "",
     notes: "",
+    linkedChars: []
   });
 
   const history = useHistory();
@@ -36,6 +37,7 @@ const SceneForm = () => {
           participants: sceneInfo.participants,
           summary: sceneInfo.summary,
           notes: sceneInfo.notes,
+          linkedChars: fetchedScene.linkedChars
         });
         
       });
@@ -49,6 +51,11 @@ const SceneForm = () => {
     setScene({ ...scene, ...obj });
     return;
   };
+
+  const handleChange = (selectedOption) => {
+    // state.setState({ selectedOption });
+    // console.log('option selected', selectedOption)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,6 +89,7 @@ const SceneForm = () => {
       )}
       <Form
         handleSubmit={handleSubmit}
+        handleChange={handleChange}
         name="Scene"
         fieldsList={sceneFields}
         update={updateScene}

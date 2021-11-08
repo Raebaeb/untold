@@ -11,9 +11,8 @@ const Form = (props) => {
     name,
     state,
     characters,
+    handleChange
   } = props;
-
-  console.log(characters)
 
   const checkState = (stateObj, field) => {
     if (stateObj) {
@@ -26,13 +25,16 @@ const Form = (props) => {
     return;
   };
 
-  const createOptions = (array) => {
+  const createOptions = (array, linked) => {
     if (name !== "Scene") { 
       return
     } else {
-    const characterOptions = array.map((char) => {
-      return { value: char.id, label: char.name };
+      const names = linked.map(char => char.name);
+      const characterOptions = array.map((char) => {
+        const isActive = names.includes(char.name) === true ? true : false;
+        return { value: char.id, label: char.name, active: isActive };
     });
+    console.log(characterOptions)
     return characterOptions;
   }
   };
@@ -62,10 +64,10 @@ const Form = (props) => {
   };
 
   const formInputs = createInputs(fieldsList);
-  const options = createOptions(characters);
+  const options = createOptions(characters, state.linkedChars);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='story-form'>
       {formInputs.map((comp) => comp)}
       {name === "Scene" ? (
         <div id="scene-dropdown">
@@ -79,14 +81,14 @@ const Form = (props) => {
           components={{
             Option,
           }}
-          // onChange={handleChange}
+          onChange={() => handleChange(state.selectedOption)}
           allowSelectAll={true}
-          value={state.optionSelected}
+          value={state.selectedOption}
           placeholder="Select Participating Characters"
         />
         </div>
       ) : null}
-      <button type="submit" className='save-btn'>Save {name}</button>
+      <button type="submit" className='save-btn'>SAVE</button>
     </form>
   );
 };
@@ -99,7 +101,7 @@ const Option = (props) => {
       <components.Option {...props}>
         <input
           type="checkbox"
-          checked={props.isSelected}
+          checked={props.data.active}
           onChange={() => null}
         />
         <label>{props.label}</label>
