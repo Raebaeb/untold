@@ -6,16 +6,11 @@ const DropdownContainer = ({ linkArray, story }) => {
   const history = useHistory();
 
   const createOptions = (array) => {
-    if (!array.length) {
-      const options = [];
-      return options;
-    } else {
       const ops = Array.isArray(array) ? Array.from(array) : array
       const options = ops.map((link) => {
         return { value: link.id, label: link.title };
       });
       return options;
-    }
   };
 
   const handleSelect = (option) => {

@@ -13,15 +13,15 @@ const Home = ({ user, stories, setStories, setStory }) => {
     }
     getAllStories().then((fetchedStories) => setStories(fetchedStories));
     setStory([])
-  }, [history, setStories, setStory, stories, user]);
+  }, [history, setStories, setStory, user]);
   return (
     <section id='home-page'>
       <Link to="/new/story" className='new-story-link first'>+ New Story</Link>
       {stories.length === 0 ? (
         <Link to="/new/story" className='new-story-link'>+ New Story</Link>
       ) : (
-        stories.map((story) => (
-          <article className="story-globe-container" key={story}>
+        stories.map((story, i) => (
+          <article className="story-globe-container" key={i}>
             <div className='story-link-bg'>
               <Link to={`story/${story.id}`} className='story-link'>{story.title}</Link>
               <h4 className='story-genre'>{story.genre}</h4>
