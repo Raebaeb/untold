@@ -9,4 +9,4 @@ class Character(BaseModel):
     abilities = TextField(null=True)
     appearance = TextField(null=True)
     goals = TextField(null=True)
-    story_id = ForeignKeyField(Story, backref='characters')
+    story_id = ForeignKeyField(Story, backref='characters', on_delete='CASCADE')

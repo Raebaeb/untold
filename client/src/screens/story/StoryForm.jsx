@@ -1,45 +1,55 @@
-import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { createStory, editStory, getStory } from '../../services'
-import Form from '../../components/form/Form';
-import { storyFields } from '../../utils/constants';
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { createStory, editStory, getStory } from "../../services";
+import { Form } from "../../components";
+import { storyFields } from "../../utils/constants";
 
 const StoryForm = () => {
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [description, setDescription] = useState("");
+  const [story, setStory] = useState({
+    title: "",
+    genre: "",
+    description: "",
+  });
   const history = useHistory();
   const params = useParams();
 
   useEffect(() => {
     if (params.id) {
       getStory(params.id).then((story) => {
-        setTitle(story.title);
-        setGenre(story.genre);
-        setDescription(story.description)
-      })
+        setStory({
+          title: story.title,
+          genre: story.genre,
+          description: story.description,
+        });
+      });
     }
-  }, [params.id])
+  }, [params.id]);
+
+  const updateStory = (obj) => {
+    setStory({ ...story, ...obj });
+    return;
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const newStory = {
-      title,
-      genre,
-      description
-    }
+    e.preventDefault();
     if (params.id) {
-      await editStory(params.id, newStory)
+      await editStory(params.id, story);
     } else {
-      await createStory(newStory);
+      await createStory(story);
     }
-    history.push('/home')
-  }
-  
+    history.push("/home");
+  };
+
   return (
-    <section>
-      {params.id ? (<h2>Edit Story</h2>) : (<h2>Spin a new tale...</h2>)}
-      <Form handleSubmit={handleSubmit} obj={'Story'} fieldsList={storyFields} />
+    <section className='form-page'>
+      {params.id ? <h1>Edit Story</h1> : <h1>Spin a new tale...</h1>}
+      <Form
+        handleSubmit={handleSubmit}
+        name={"Story"}
+        fieldsList={storyFields}
+        update={updateStory}
+        state={story}
+      />
     </section>
   );
 };

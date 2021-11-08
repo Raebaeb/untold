@@ -1,36 +1,13 @@
-import Register from './Register';
-import Login from './Login';
-import Home from './Home';
-import Landing from './Landing';
-import StoryForm from './story/StoryForm';
-import ViewStory from './story/ViewStory';
-import ViewScene from './scenes/ViewScene';
-import Timeline from './timeline/Timeline';
-import SceneForm from './scenes/SceneForm';
-import SceneMain from './scenes/SceneMain';
-import IdeaForm from './ideas/IdeaForm';
-import IdeaMain from './ideas/IdeaMain';
-import ViewIdea from './ideas/ViewIdea';
-import CharacterForm from './characters/CharacterForm';
-import CharacterMain from './characters/CharacterMain';
-import ViewCharacter from './characters/ViewCharacter';
-
-
-export {
-  Register,
-  Login,
-  Home,
-  Landing,
-  StoryForm,
-  ViewStory,
-  ViewScene,
-  SceneForm,
-  SceneMain,
-  Timeline,
-  IdeaForm,
-  IdeaMain,
-  ViewIdea,
-  CharacterForm,
-  CharacterMain,
-  ViewCharacter
-}
+export { default as Register } from './Register';
+export { default as Login } from './Login';
+export { default as Home } from './Home';
+export { default as Landing } from './Landing';
+export { default as StoryForm } from './story/StoryForm';
+export { default as ViewStory } from './story/ViewStory';
+export { default as SceneForm } from './scenes/SceneForm';
+export { default as SceneMain } from './scenes/SceneMain';
+export { default as Timeline } from './timeline/Timeline';
+export { default as IdeaForm } from './ideas/IdeaForm';
+export { default as IdeaMain } from './ideas/IdeaMain';
+export { default as CharacterForm } from './characters/CharacterForm';
+export { default as CharacterMain } from './characters/CharacterMain';

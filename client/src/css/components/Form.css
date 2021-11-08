@@ -1,0 +1,33 @@
+
+.form-page {
+  padding: 15px 10px 0 10px;
+}
+
+.input-container, .text-area-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+.input-container>input, .text-area-container>textarea {
+  border: 1px transparent var(--font-color);
+  border-bottom-style: solid;
+  width: 200px;
+}
+
+.input-container>input:hover, .text-area-container>textarea:hover {
+  outline: none;
+  padding-top: 20px;
+}
+
+.input-container>label, .text-area-container>label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.story-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}

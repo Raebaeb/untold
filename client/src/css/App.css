@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@400;700&family=Nunito&display=swap');
+
+:root {
+  --font-color: #353539;
+  --small-font: 'Nunito', san-serif;
+  --blue: #224D87;
+  --gray-blue: #5E6D82;
+  --yellow: #D7A31A;
+  --light-gray: #F8F8FF;
+  --main-color: #FCFCFC;
+  --bg-color: #F1EFE6;
+  --header-font: 'Alegreya SC', serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  color: var(--font-color);
+  background-color: var(--bg-color);
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 35px 1fr 20px;
+  font-family: var(--small-font);
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+a:visited {
+  color: var(--font-color);
+}
+
+h1 {
+  font-family: var(--header-font);
+  font-size: 1.5em;
+  margin: 0;
+  position: relative;
+}
+
+h1:before {
+  content : "";
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 120px;
+  border-bottom: 1px solid var(--yellow);
+}
+
+h4 {
+  margin-top: 5px;
+}
+
+main {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  background-color: var(--main-color);
+  flex-direction: column;
+  text-align: center;
+  width: 95vw;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  font-family: var(--small-font);
+}
+
+@media only screen and (min-width: 768px ) {
+  
+  .App {
+    grid-template-columns: 4(repeat, 1fr);
+    grid-template-rows: 50px 1fr 30px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  main {
+    max-width: 88vw;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}

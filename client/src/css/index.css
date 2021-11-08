@@ -1,0 +1,10 @@
+@import url('./App.css');
+@import url('./components/Nav.css');
+@import url('./components/buttons.css');
+@import url('./components/Footer.css');
+@import url('./screens/Landing.css');
+@import url('./screens/UserEntry.css');
+@import url('./components/Dropdown.css');
+@import url('./screens/Home.css');
+@import url('./screens/MainView.css');
+@import url('./components/Form.css');

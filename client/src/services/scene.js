@@ -22,18 +22,18 @@ export const getScene = async (storyid, sceneid) => {
   }
 }
 
-export const createScene = async (storyid, newStory) => {
+export const createScene = async (storyid, newScene) => {
   try {
-    const response = await axios.post(`${apiURL}/api/${storyid}/scenes/new`, newStory);
+    const response = await axios.post(`${apiURL}/api/${storyid}/scenes/new`, newScene);
     return response.data;
   } catch (e) {
     console.error(e.message)
   }
 }
 
-export const editScene = async (storyid, sceneid, storyInfo) => {
+export const editScene = async (storyid, sceneid, sceneInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/edit/${sceneid}`, storyInfo);
+    const response = await axios.put(`${apiURL}/api/${storyid}/scenes/edit/${sceneid}`, sceneInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);
@@ -42,7 +42,7 @@ export const editScene = async (storyid, sceneid, storyInfo) => {
 
 export const deleteScene = async (storyid, sceneid) => {
   try {
-    await axios.delete(`${apiURL}/api/${storyid}/delete/${sceneid}`)
+    await axios.delete(`${apiURL}/api/${storyid}/scenes/delete/${sceneid}`)
   } catch (e) {
     console.error(e.message);
   }

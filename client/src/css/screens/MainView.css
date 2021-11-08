@@ -1,0 +1,38 @@
+#link-container {
+  margin-top: 20px;
+}
+
+.main-link {
+  color: var(--font-color);
+  background-color: transparent;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.main-link-container {
+  width: 257px;
+  height: 60px;
+  margin: 8px auto;
+  border: 2px solid var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-link-container:hover {
+  border: 2px solid var(--yellow)
+}
+
+.main-view-page {
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 15px;
+} 
+.story-main {
+  margin-top: 10vh;
+  padding: 0 40px;
+}
+
+#warning {
+  font-size: .5em;
+}

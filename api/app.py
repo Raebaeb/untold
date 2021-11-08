@@ -12,9 +12,7 @@ from models.scene import Scene
 from models.idea import Idea
 from models.timeline import Timeline
 from models.event import Event
-from models.char_to_idea import CharToIdea
 from models.char_to_scene import CharToScene
-from models.scene_to_idea import SceneToIdea
 
 from resources.users import user
 from resources.stories import story
@@ -82,13 +80,13 @@ CORS(app, origins=origins, supports_credentials=True)
 
 
 if 'DATABASE_URL' in os.environ:
-    initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene, CharToIdea, SceneToIdea])
+    initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene])
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = False
-    app.config['SESSION_COOKIE_SAMESITE'] = None
+    app.config['SESSION_COOKIE_SAMESITE'] = 'None'
     origins.append(os.environ.get('CLIENT_URL'))
 
 
 if __name__ == '__main__': 
-    initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene, CharToIdea, SceneToIdea])
+    initialize([User, Story, Character, Scene, Idea, Timeline, Event, CharToScene])
     app.run(debug=DEBUG, port=PORT)
