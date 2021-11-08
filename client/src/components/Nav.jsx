@@ -10,11 +10,11 @@ const Nav = (props) => {
 
   const params = useParams();
 
-  useEffect(() => {
-    if (!params) {
+  // useEffect(() => {
+  //   if (!params) {
 
-    }
-  }, [params])
+  //   }
+  // }, [params])
 
   const handleLogout = async () => {
     await logout();
