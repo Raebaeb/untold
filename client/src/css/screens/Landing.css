@@ -10,11 +10,7 @@
 }
 
 #landing-hero {
-  width: 16ch;
-  animation: typing 2s steps(16), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
+
   font-family: var(--header-font);
   font-size: 2em;
   font-weight: 400;
