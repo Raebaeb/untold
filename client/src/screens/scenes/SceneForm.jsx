@@ -53,12 +53,12 @@ const SceneForm = () => {
   };
 
   const handleChange = (array) => {
-    array.forEach((char) => {
-      if (char.includes(!active)) {
+    // array.forEach((char) => {
+    //   if (char.includes(!active)) {
         
-      }
+    //   }
 
-    })
+    // })
   }
 
   const handleSubmit = async (e) => {
