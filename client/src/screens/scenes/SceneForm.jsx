@@ -65,11 +65,11 @@ const SceneForm = () => {
     e.preventDefault();
     const newScene = {
       sceneInfo: {
-        title,
-        location,
-        participants,
-        summary,
-        notes
+        title: scene.title,
+        location: scene.location,
+        participants: scene.participants,
+        summary: scene.summary,
+        notes: scene.notes
       },
       addToScene: add,
       removeFromScene: remove,
