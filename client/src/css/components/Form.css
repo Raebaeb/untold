@@ -11,7 +11,7 @@
 
 .input-container>input, .text-area-container>textarea {
   border: 1px transparent var(--font-color);
-  border-bottom-style: 1px solid var(--font-color);
+  border-bottom: 1px solid var(--font-color);
   width: 200px;
 }
 
