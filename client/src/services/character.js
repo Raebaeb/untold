@@ -7,9 +7,10 @@ const apiURL = process.env.NODE_ENV === "development"
 export const getAllCharacters = async (storyid) => {
   try {
     const response = await axios.get(`${apiURL}/api/${storyid}/characters`);
+    console.log('ALL CHAR QUER',response)
     return response.data;
   } catch (e) {
-    console.error(e.message);
+    console.error('ALL CHAR QYER', e);
   }
 };
 
@@ -22,18 +23,18 @@ export const getCharacter = async (storyid, charid) => {
   }
 };
 
-export const newCharacter = async (storyid) => {
+export const createCharacter = async (storyid, newChar) => {
   try {
-    const response = await axios.post(`${apiURL}/api/${storyid}/characters/new`);
+    const response = await axios.post(`${apiURL}/api/${storyid}/characters/new`, newChar);
     return response.data;
   } catch (e) {
     console.error(e.message);
   }
 };
 
-export const editCharacter = async (storyid, charid) => {
+export const editCharacter = async (storyid, charid, charInfo) => {
   try {
-    const response = await axios.put(`${apiURL}/api/${storyid}/characters/edit/${charid}`);
+    const response = await axios.put(`${apiURL}/api/${storyid}/characters/edit/${charid}`, charInfo);
     return response.data;
   } catch (e) {
     console.error(e.message);

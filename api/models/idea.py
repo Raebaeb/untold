@@ -5,4 +5,4 @@ from models.story import Story
 class Idea(BaseModel):
     title = CharField()
     text = TextField()
-    story_id = ForeignKeyField(Story, backref='ideas')
+    story_id = ForeignKeyField(Story, backref='ideas', on_delete='CASCADE')

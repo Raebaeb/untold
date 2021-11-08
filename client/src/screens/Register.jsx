@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, Link } from "react-router-dom";
 import { register } from "../services";
 
 const Register = (props) => {
@@ -28,51 +28,59 @@ const Register = (props) => {
     history.push('/home');
   }
   return (
-    <section>
-      <h3>Register</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
+    <section id='register-page'>
+      <h1>Create An Account</h1>
+      <form onSubmit={handleSubmit} className='user-form'>
+        <div id='name-container'>
+          <label htmlFor="first-name" className='first-name-class'>First Name</label>
+          <input
+            id="first-name"
+            className='first-name-class'
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <label htmlFor="last-name" className='last-name-class'>Last Name</label>
+          <input
+            id="last-name"
+            className='last-name-class'
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
+        <label htmlFor="email" className='email-class'>Email</label>
         <input
           id="email"
+          className='email-class'
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password" className='password-class'>Password</label>
         <input
           id="password"
+          className='password-class'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <label htmlFor="password-confirm">Confirm Password:</label>
+        <label htmlFor="password-confirm" className="password-confirm-class">Confirm Password</label>
         <input
           id="password-confirm"
+          className="password-confirm-class"
           type="password"
           value={passwordConfirm}
           onChange={(e) => setPasswordConfirm(e.target.value)}
           required
         />        
-        <label htmlFor="first-name">First Name:</label>
-        <input
-          id="first-name"
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-        <label htmlFor="last-name">Last Name:</label>
-        <input
-          id="last-name"
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-        <button type="submit">REGISTER</button>
+        <button type="submit" className='register-btn user-btn'>REGISTER</button>
       </form>
+      <p id='login-message'>Already have an account? <br /> Log in <Link to='/login' id='login-link'>here</Link>.</p>
     </section>
   );
 };

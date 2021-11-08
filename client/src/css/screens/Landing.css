@@ -1,0 +1,26 @@
+.type-anim {
+  border-bottom: 2px solid var(--font-color);
+}
+
+#landing-page {
+  margin: 0 auto;
+  align-content: center;
+  height: 310px;
+  padding: 0 20px;
+}
+
+#landing-hero {
+  font-family: var(--header-font);
+  font-size: 2.2em;
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 768px ) {
+
+  #landing-hero {
+    font-size: 2.5em;
+  }
+  #landing-page {
+    width: 50vw;
+  }
+}

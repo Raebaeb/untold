@@ -2,7 +2,8 @@ import axios from "axios";
 import { defaultRoute, register, login, logout } from "./user"
 import { getAllStories, getStory, createStory, editStory, deleteStory } from "./story"
 import { getAllScenes, getScene, createScene, editScene, deleteScene } from './scene'
-import { getAllCharacters } from './character'
+import { getAllCharacters, getCharacter, createCharacter, editCharacter, deleteCharacter } from './character'
+import { getAllIdeas, getIdea, createIdea, editIdea, deleteIdea } from './idea'
 
 axios.defaults.withCredentials = true;
 
@@ -22,4 +23,13 @@ export {
   editScene,
   deleteScene,
   getAllCharacters,
+  getCharacter,
+  createCharacter,
+  editCharacter,
+  deleteCharacter,
+  getAllIdeas,
+  getIdea,
+  createIdea,
+  editIdea,
+  deleteIdea,
 }

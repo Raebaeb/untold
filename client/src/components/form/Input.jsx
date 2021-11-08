@@ -1,18 +1,22 @@
-import React from 'react';
+const Input = ({ label, fieldKey, update, value }) => {
 
-const Input = (props) => {
-  const { label } = props.character
-  const { state, setState } = props
+
   return (
-    <div>
+    <div className="input-container">
       <label htmlFor={label}>{label}</label>
-      <input 
+      <input
         id={label}
-        value={state}
-        onChange={(e) => setState(e.target.value)}
+        name={fieldKey}
+        type="text"
+        value={value}
+        required={fieldKey === 'title' || fieldKey === 'name' ? true : false}
+        onChange={(e) => update({[`${fieldKey}`]: e.target.value})}
       />
     </div>
   );
 };
 
 export default Input;
+
+
+

@@ -14,7 +14,7 @@ event = Blueprint('events', __name__, url_prefix='/api/<int:storyid>/timeline/ev
 @event.route('/')
 @login_required
 @story_auth
-def get_events(storyid):
+def get_all_events(storyid):
     timeline = Timeline.get(Timeline.story_id == storyid)
     try:
         events = [model_to_dict(event) for event in Event.select().where(Event.timeline_id == timeline)]
@@ -25,7 +25,7 @@ def get_events(storyid):
 @event.route('/<int:eventid>')
 @login_required
 @story_auth
-def read_event(storyid, eventid):
+def get_event(storyid, eventid):
     try:
         event = Event.get_by_id(eventid)
         return jsonify(model_to_dict(event)), 200
@@ -35,7 +35,7 @@ def read_event(storyid, eventid):
 @event.route('/new', methods=['POST'])
 @login_required
 @story_auth
-def add_event(storyid):
+def new_event(storyid):
     timeline = Timeline.get(Timeline.story_id == storyid)
     body = request.get_json()
     event = Event.create(**body, timeline_id=timeline)
@@ -50,7 +50,7 @@ def edit_event(storyid, eventid):
         body = request.get_json()
         (Event
             .update(**body)
-            .where(Event.id == eventid, Event.timeline_id == timeline)
+            .where((Event.id == eventid) & (Event.timeline_id == timeline))
             .execute())
         event = Event.get_by_id(eventid)
         return jsonify(model_to_dict(event)), 203
@@ -65,7 +65,7 @@ def delete_event(storyid, eventid):
     try:
         (Event
             .delete()
-            .where(eventid == Event.id, Event.timeline_id == timeline)
+            .where((eventid == Event.id) & (Event.timeline_id == timeline))
             .execute())
         return jsonify(message=None), 204
     except DoesNotExist:

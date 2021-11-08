@@ -18,26 +18,28 @@ const Login = (props) => {
     history.push('/home');
   }
   return (
-    <section>
-      <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
+    <section id='login-page'>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit} className='user-form'>
+        <label htmlFor="email" className='email-label'>Email</label>
         <input
           id="email"
-          type="text"
+          className='email'
+          type="text" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password" className='password-label'>Password</label>
         <input
           id="password"
+          className='password'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Log In</button>
+        <button type="submit" className='login-btn user-btn'>LOG IN</button>
       </form>
     </section>
   );
