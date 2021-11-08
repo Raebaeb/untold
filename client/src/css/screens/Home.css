@@ -85,7 +85,6 @@
 
   .first {
     grid-column: 1 / 2;
-
   }
   .last {
     grid-column: 3 / 4;
@@ -97,6 +96,7 @@
     align-self: center;
     line-height: 3em;
   }
+
   .story-link-bg {
     height: 25vh;
     width: 33vw;
