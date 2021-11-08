@@ -91,9 +91,11 @@
     grid-column: 3 / 4;
   }
   .new-story-link {
-    width: 200px;
+    width: 100px;
+    margin: 0 auto;
     justify-self: center;
     align-self: center;
+    line-height: 3em;
   }
   .story-link-bg {
     height: 25vh;
@@ -105,9 +107,11 @@
 
   #home-page {
     flex-flow: row wrap;
-    height: 800px;
+    justify-content: center;
+    align-content: flex-start;
+    max-height: 800px;
     width: 100%;
-
+    padding-top: 20px;
   }
 
 }

@@ -16,7 +16,7 @@ const Home = ({ user, stories, setStories, setStory }) => {
   }, [history, setStories, setStory, user]);
   return (
     <section id='home-page'>
-      <Link to="/new/story" className='new-story-link first'>+ New Story</Link>
+      {stories.length >= 2 ? null : <Link to="/new/story" className='new-story-link first'>+ New Story</Link>}
       {stories.length === 0 ? (
         <Link to="/new/story" className='new-story-link'>+ New Story</Link>
       ) : (
