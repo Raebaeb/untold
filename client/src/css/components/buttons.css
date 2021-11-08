@@ -1,11 +1,13 @@
 button {
   border-radius: 5px;
   border: none;
+  color: white;
 }
-
-
 .login-btn {
   background-color: var(--blue);
+}
+.logout-btn {
+  background-color: var(--gray-blue);
 }
 .register-btn {
   background-color: var(--yellow);
@@ -14,7 +16,6 @@ button {
   font-family: var(--small-font);
   font-weight: bold;
   font-size: 1em;
-  color: white;
   width: 120px;
   height: 40px;
   margin: 0 5px;

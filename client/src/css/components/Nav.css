@@ -16,3 +16,7 @@ line-height: 28px;
 letter-spacing: -0.08em;
 text-align: center;
 }
+
+#welcome-message {
+  display: none;
+}

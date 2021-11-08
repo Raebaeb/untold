@@ -26,10 +26,10 @@ const Nav = (props) => {
       <Link to="/home" id="logo">Untold.</Link>
       {props.user ? (
         <>
-          <h3>Welcome back, {props.user.first_name}!</h3>
+          <h3 id='welcome-message'>Welcome back, {props.user.first_name}!</h3>
           {story.length !== 0 ? <DropdownContainer linkArray={storyElems} story={story}/> : null}
           <DropdownContainer linkArray={props.stories}/>
-          <button onClick={handleLogout}>Log Out</button>
+          <button onClick={handleLogout} className='logout-btn'>Log Out</button>
         </>
       ) : null}
     </nav>
