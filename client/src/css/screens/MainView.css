@@ -28,3 +28,11 @@
   box-sizing: border-box;
   padding-top: 15px;
 } 
+.story-main {
+  margin-top: 10vh;
+  padding: 0 40px;
+}
+
+#warning {
+  font-size: .5em;
+}

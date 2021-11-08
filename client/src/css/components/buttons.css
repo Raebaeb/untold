@@ -8,6 +8,7 @@ button {
 .delete-btn {
   background-color: transparent;
   color: #E8674A;
+  
 }
 
 .login-btn {
@@ -42,7 +43,7 @@ button {
   grid-row: 3 / 4;
 }
 
-#new-btn {
+.new-btn {
 position: absolute;
 width: 140px;
 height: 30px;
@@ -54,4 +55,18 @@ background-color: var(--gray-blue);
 font-weight: bold;
 text-align: center;
 letter-spacing: -0.02em;
+}
+
+@media only screen and (min-width: 768px ) {
+  .logout-btn {
+    background-color: var(--gray-blue);
+    height: 30px;
+  }
+  .new-btn {
+    bottom: 100px;
+  }
+  .user-btn {
+    margin-top: 20px;
+  }
+
 }

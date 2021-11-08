@@ -36,7 +36,7 @@
 .story-link:before {
   content : "";
   position: absolute;
-  margin: auto;
+  margin: 0 auto;
   left: 0;
   right: 0;
   bottom: 0;
@@ -78,4 +78,36 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding-top: 10px;
+}
+
+@media only screen and (min-width: 768px ) {
+
+  .first {
+    grid-column: 1 / 2;
+
+  }
+  .last {
+    grid-column: 3 / 4;
+  }
+  .new-story-link {
+    width: 200px;
+    justify-self: center;
+    align-self: center;
+  }
+  .story-link-bg {
+    height: 25vh;
+    width: 33vw;
+  }
+  .story-globe-container {
+    margin: 0 auto;
+  }
+
+  #home-page {
+    flex-flow: row wrap;
+    height: 800px;
+    width: 100%;
+
+  }
+
 }

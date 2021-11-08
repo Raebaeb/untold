@@ -80,7 +80,7 @@ const Register = (props) => {
         />        
         <button type="submit" className='register-btn user-btn'>REGISTER</button>
       </form>
-      <p>Already have an account? <br /> Log in <Link to='/login' id='login-link'>here</Link>.</p>
+      <p id='login-message'>Already have an account? <br /> Log in <Link to='/login' id='login-link'>here</Link>.</p>
     </section>
   );
 };

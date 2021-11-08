@@ -1,4 +1,5 @@
 .user-form {
+  margin: 20px 0;
   display: flex;
   flex-flow: column nowrap;
   justify-items: center;
@@ -48,4 +49,24 @@
 }
 #login-link:hover {
   color: var(--yellow)
+}
+
+@media only screen and (min-width: 768px ) {
+  
+  .user-form {
+    height: 400px;
+  }
+  .user-form>input {
+    width: 200px;
+  }
+  .user-form>input, #name-container>input {
+    margin-bottom: 20px;
+  }
+  
+  #name-container>input {
+    width: 170px; 
+  }
+  #login-message {
+    margin-top: 0;
+  }
 }

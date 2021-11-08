@@ -21,3 +21,12 @@
   line-height: 1em;
   padding-right: 2px;
 }
+
+@media only screen and (min-width: 768px ) {
+
+  .Dropdown-control {
+    font-size: 1.2em;
+    padding-right: 33px;
+  }
+
+}

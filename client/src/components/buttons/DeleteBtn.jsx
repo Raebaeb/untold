@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 
-const DeleteBtn = ({ deleteFunc, name, storyid, elemid}) => {
+const DeleteBtn = ({ deleteFunc, name, storyid, elemid, className }) => {
   const history = useHistory();
 
   const handleDelete = async () => {
@@ -22,7 +22,7 @@ const DeleteBtn = ({ deleteFunc, name, storyid, elemid}) => {
   }
 
   return (
-    <button className="delete-btn" onClick={handleDelete}>
+    <button className={`delete-btn ${className}`} onClick={handleDelete}>
       Delete {name}
     </button>
   );

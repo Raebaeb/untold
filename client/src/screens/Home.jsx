@@ -12,12 +12,11 @@ const Home = ({ user, stories, setStories, setStory }) => {
       history.push("/");
     }
     getAllStories().then((fetchedStories) => setStories(fetchedStories));
-    console.log(stories);
     setStory([])
   }, [history, setStories, setStory, stories, user]);
   return (
     <section id='home-page'>
-      <Link to="/new/story" className='new-story-link'>+ New Story</Link>
+      <Link to="/new/story" className='new-story-link first'>+ New Story</Link>
       {stories.length === 0 ? (
         <Link to="/new/story" className='new-story-link'>+ New Story</Link>
       ) : (
@@ -35,7 +34,7 @@ const Home = ({ user, stories, setStories, setStory }) => {
           </article>
         ))
       )}
-      <Link to="/new/story" className='new-story-link'>+ New Story</Link>
+      <Link to="/new/story" className='new-story-link last'>+ New Story</Link>
     </section>
   );
 };

@@ -7,20 +7,29 @@ const ViewStory = ({ story, setStory }) => {
   const params = useParams();
 
   useEffect(() => {
-    getStory(params.id).then((fetchedStory) => setStory(fetchedStory))
-  }, [params.id, setStory])
+    getStory(params.id).then((fetchedStory) => setStory(fetchedStory));
+  }, [params.id, setStory]);
 
   return (
-    <section className='main-view-page'>
-      <h1>{story.title}</h1>
-      <h4>{story.genre}</h4>
-      <p>{story.description}</p>
-      {/* Add Links to characters, scenes, ideas, timeline */}
+    <section className="main-view-page">
+      <DeleteBtn
+        deleteFunc={deleteStory}
+        name="Story"
+        storyid={story.id}
+        className="story-delete"
+      />
+      <p id="warning">
+        Careful! Deleting this story will delete all associated characters,
+        scenes, and notes.
+      </p>
+      <article className="story-main">
+        <h1>{story.title}</h1>
+        <h4>{story.genre}</h4>
+        <p>{story.description}</p>
+      </article>
       <Link to={`/story/edit/${story.id}`}>
-        <button>Edit</button>
+        <button className="new-btn">Edit</button>
       </Link>
-      <DeleteBtn deleteFunc={deleteStory} name="Story" storyid={story.id}/>
-      <p id='warning'>Careful! Deleting this story will delete all associated characters, scenes, and notes.</p>
     </section>
   );
 };
