@@ -53,10 +53,10 @@ const CharacterForm = () => {
   };
 
   return (
-    <section>
+    <section className='form-page'>
       {params.character ? (
         <>
-          <h2>{character.name}</h2>
+          <h1>{character.name}</h1>
           <DeleteBtn
             deleteFunc={deleteCharacter}
             name="Character"
@@ -65,7 +65,7 @@ const CharacterForm = () => {
           />
         </>
       ) : (
-        <h2>New Character</h2>
+        <h1>New Character</h1>
       )}
       <Form
         handleSubmit={handleSubmit}

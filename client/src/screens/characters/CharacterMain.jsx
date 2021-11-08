@@ -14,7 +14,7 @@ const CharacterMain = () => {
   },[params.id])
   
   return (
-    <section>
+    <section className='main-view-page'>
       <h1>Characters</h1>
       <MainLinks storyid={params.id} type="characters" objectArray={allCharacters}/>
       <NewBtn storyid={params.id} type='Character'/>

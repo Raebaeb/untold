@@ -11,7 +11,7 @@ const ViewStory = ({ story, setStory }) => {
   }, [params.id, setStory])
 
   return (
-    <section>
+    <section className='main-view-page'>
       <h1>{story.title}</h1>
       <h4>{story.genre}</h4>
       <p>{story.description}</p>

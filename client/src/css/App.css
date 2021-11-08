@@ -42,6 +42,23 @@ h1 {
   font-family: var(--header-font);
   font-size: 2em;
   margin: 0;
+  position: relative;
+}
+
+h1:before {
+  content : "";
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  width: 120px;
+  border-bottom: 1px solid var(--yellow);
+}
+
+h4 {
+  margin-top: 5px;
 }
 
 main {

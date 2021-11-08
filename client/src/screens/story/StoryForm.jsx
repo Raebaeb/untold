@@ -41,7 +41,7 @@ const StoryForm = () => {
   };
 
   return (
-    <section>
+    <section className='form-page'>
       {params.id ? <h1>Edit Story</h1> : <h1>Spin a new tale...</h1>}
       <Form
         handleSubmit={handleSubmit}

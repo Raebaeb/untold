@@ -2,10 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MainLinks = (props) => {
-  console.log("props",props)
   const createLinks = (arr) => {
     const links = arr.map((elem, i) => {
-      console.log('ELEM', elem)
       return (props.type === "characters" ? (
         <SingleLink
           key={i}

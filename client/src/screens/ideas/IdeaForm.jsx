@@ -37,10 +37,10 @@ const IdeaForm = () => {
   };
 
   return (
-    <section>
+    <section className='form-page'>
       {params.idea ? (
         <>
-          <h2>{idea.title}</h2>
+          <h1>{idea.title}</h1>
           <DeleteBtn
             deleteFunc={deleteIdea}
             name="Idea"
@@ -49,7 +49,7 @@ const IdeaForm = () => {
           />
         </>
       ) : (
-        <h2>New Idea</h2>
+        <h1>New Idea</h1>
       )}
       <Form
         handleSubmit={handleSubmit}

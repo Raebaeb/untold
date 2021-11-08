@@ -66,10 +66,10 @@ const SceneForm = () => {
   };
 
   return (
-    <section>
+    <section className='form-page'>
       {params.scene ? (
         <>
-          <h2>{scene.title}</h2>
+          <h1>{scene.title}</h1>
           <DeleteBtn
             deleteFunc={deleteScene}
             name="Scene"
@@ -78,7 +78,7 @@ const SceneForm = () => {
           />
         </>
       ) : (
-        <h2>New Scene</h2>
+        <h1>New Scene</h1>
       )}
       <Form
         handleSubmit={handleSubmit}
